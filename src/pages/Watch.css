@@ -1,0 +1,43 @@
+.watch-container { padding: 20px; max-width: 800px; }
+
+.comment-input-area { 
+  margin-bottom: 20px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+}
+
+/* 入力欄のサイズを固定 */
+.comment-input-area textarea { 
+  width: 100%; 
+  max-width: 100%;       /* 幅を固定 */
+  min-height: 80px;      /* 最小の高さ */
+  max-height: 80px;      /* 最大の高さ（これで広がらなくなります） */
+  resize: none;          /* ユーザーが右下のハンドルで広げるのを禁止 */
+  padding: 10px; 
+  border-radius: 8px; 
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* paddingを含めてサイズ計算 */
+}
+
+/* 送信ボタンのデザイン */
+.comment-input-area button { 
+  align-self: flex-end; 
+  padding: 8px 20px; 
+  background-color: #065fd4; /* YouTube風の青 */
+  color: white;
+  border: none;
+  border-radius: 18px;       /* 角丸ボタン */
+  font-weight: 600;
+  cursor: pointer; 
+  transition: background 0.2s;
+}
+
+.comment-input-area button:hover { 
+  background-color: #0556bf; 
+}
+
+.comments-list { display: flex; flex-direction: column; gap: 15px; }
+.comment-item { padding: 10px; border-bottom: 1px solid #eee; }
+.comment-text { margin: 0 0 5px 0; font-size: 0.95rem; }
+.comment-date { color: #888; }

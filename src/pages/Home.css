@@ -1,0 +1,29 @@
+.home-container { padding: 20px; }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.video-card {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.thumbnail-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 動画らしい比率に */
+  background-color: #ddd;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-weight: bold;
+}
+
+.video-info h3 { margin: 8px 0 4px 0; font-size: 1rem; line-height: 1.2; }
+.dir-text { color: #606060; font-size: 0.85rem; margin: 0; }
