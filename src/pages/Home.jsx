@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -15,6 +16,7 @@ export default function Home() {
     axios.get('http://localhost:5000/api/videos')
       .then((response) => {
         setVideos(response.data.items);
+        console.log(response.data.items);
       })
       .catch((error) => console.error('Error fetching videos:', error));
   }, []);
@@ -32,7 +34,7 @@ export default function Home() {
         {filteredVideos.map((video) => (
           <Link
             key={video.id}
-            to={`/watch/${video.id}`}
+            to={`/watch?v=${video.id}`}
             className="video-card"
             onClick={() => setCurrentVideo(video)}
           >

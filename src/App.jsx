@@ -14,16 +14,12 @@ function App() {
           <header style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
             <h1>My Video App</h1>
           </header>
-
           <Header />
-          
-          {/* ページ遷移してもVideoPlayerはここに残り続けます */}
           <VideoPlayer />
-
           <main style={{ padding: '20px' }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/watch/:videoId" element={<Watch />} />
+              <Route path="/watch" element={<Watch />} />
             </Routes>
           </main>
         </div>
