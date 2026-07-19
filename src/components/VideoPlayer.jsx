@@ -1,3 +1,4 @@
+// src/components/VideoPlayer.jsx
 import { useRef, useState, useEffect } from 'react';
 import { useVideoStore } from '../store/useVideoStore';
 import './VideoPlayer.css';
@@ -6,15 +7,12 @@ export default function VideoPlayer() {
   const { currentVideo } = useVideoStore();
   const videoRef = useRef(null);
   
-  // 通常ループ用
   const [isLoop, setIsLoop] = useState(false);
-  
-  // 区間リピート用
   const [isSectionLoop, setIsSectionLoop] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
 
-  // 区間リピートの監視
+  // 1. 区間リピートの監視
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !isSectionLoop || endTime <= startTime) return;
@@ -28,6 +26,18 @@ export default function VideoPlayer() {
     video.addEventListener('timeupdate', handleTimeUpdate);
     return () => video.removeEventListener('timeupdate', handleTimeUpdate);
   }, [isSectionLoop, startTime, endTime]);
+
+  // 2. コメントのタイムスタンプクリックを監視（追加）
+  useEffect(() => {
+    const handleSeek = (e) => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = e.detail;
+        videoRef.current.play(); // 再生位置移動後に再生開始
+      }
+    };
+    window.addEventListener('seekTo', handleSeek);
+    return () => window.removeEventListener('seekTo', handleSeek);
+  }, []);
 
   if (!currentVideo) return null;
 
