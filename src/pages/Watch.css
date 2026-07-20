@@ -7,37 +7,63 @@
   gap: 10px; 
 }
 
-/* 入力欄のサイズを固定 */
+/* 入力欄のサイズ */
 .comment-input-area textarea { 
   width: 100%; 
-  max-width: 100%;       /* 幅を固定 */
-  min-height: 80px;      /* 最小の高さ */
-  max-height: 80px;      /* 最大の高さ（これで広がらなくなります） */
-  resize: none;          /* ユーザーが右下のハンドルで広げるのを禁止 */
+  min-height: 80px; 
+  max-height: 80px; 
+  resize: none; 
   padding: 10px; 
   border-radius: 8px; 
   border: 1px solid #ccc;
-  box-sizing: border-box; /* paddingを含めてサイズ計算 */
+  box-sizing: border-box;
 }
 
-/* 送信ボタンのデザイン */
+/* 送信ボタンのスタイル */
 .comment-input-area button { 
   align-self: flex-end; 
   padding: 8px 20px; 
-  background-color: #065fd4; /* YouTube風の青 */
-  color: white;
-  border: none;
-  border-radius: 18px;       /* 角丸ボタン */
-  font-weight: 600;
+  background-color: #065fd4; 
+  color: white; 
+  border: none; 
+  border-radius: 18px; 
+  font-weight: 600; 
   cursor: pointer; 
   transition: background 0.2s;
 }
 
-.comment-input-area button:hover { 
-  background-color: #0556bf; 
-}
+.comment-input-area button:hover { background-color: #0556bf; }
 
 .comments-list { display: flex; flex-direction: column; gap: 15px; }
-.comment-item { padding: 10px; border-bottom: 1px solid #eee; }
+
+/* コメントアイテムのレイアウト */
+.comment-item { 
+  padding: 10px; 
+  border-bottom: 1px solid #eee; 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 15px;
+}
+
+.comment-content { flex-grow: 1; }
 .comment-text { margin: 0 0 5px 0; font-size: 0.95rem; }
-.comment-date { color: #888; }
+.comment-date { color: #888; display: block; }
+
+/* 編集・削除ボタンの右寄せコンテナ */
+.comment-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.comment-actions button {
+  padding: 6px 12px;
+  background-color: #f2f2f2;
+  color: #333;
+  border: none;
+  border-radius: 18px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.comment-actions button:hover { background-color: #e0e0e0; }
