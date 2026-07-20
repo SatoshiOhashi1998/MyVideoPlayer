@@ -17,49 +17,55 @@ export default function Watch() {
   const [newComment, setNewComment] = useState('');
   const [editingId, setEditingId] = useState(null);
 
+  // 1. タイトル更新専用
+  useEffect(() => {
+    document.title = currentVideo ? `${currentVideo.filetitle} - My Video App` : 'My Video App';
+  }, [currentVideo]);
+
+  // 2. コメント取得専用: currentVideo が変わるたびに最新のコメントを取得
+  useEffect(() => {
+    if (currentVideo) {
+      fetchComments();
+    }
+  }, [currentVideo]);
+
+  // 3. 動画情報取得用: URLの videoId が変わった時だけ実行
   useEffect(() => {
     if (!videoId) return;
 
-    const updateTitle = (title) => {
-      document.title = title ? `${title} - My Video App` : 'My Video App';
-    };
-
-    const handleInitialSeek = () => {
-      if (startTime) {
-        setTimeout(() => {
-          window.dispatchEvent(new CustomEvent('seekTo', { detail: Number(startTime) }));
-        }, 500);
-      }
-    };
-
-    if (currentVideo && currentVideo.id === videoId) {
-      updateTitle(currentVideo.filetitle);
-      fetchComments();
-      handleInitialSeek();
+    // 現在の動画と同じなら何もしない
+    if (currentVideo && String(currentVideo.id) === String(videoId)) {
       return;
     }
 
     axios.get(`http://localhost:5000/api/videos/${videoId}/info`)
       .then(res => {
         setCurrentVideo(res.data);
-        updateTitle(res.data.filetitle);
-        fetchComments();
-        handleInitialSeek();
       })
       .catch(err => console.error("動画情報の取得に失敗:", err));
+  }, [videoId, setCurrentVideo]);
 
-    return () => { document.title = 'My Video App'; };
-  }, [videoId, currentVideo, setCurrentVideo, startTime]);
+  // 4. 初期シーク用: URLのパラメータが変わった時だけ実行
+  useEffect(() => {
+    if (startTime) {
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('seekTo', { detail: Number(startTime) }));
+      }, 500);
+    }
+  }, [videoId, startTime]);
 
   const fetchComments = () => {
-    if (!videoId) return;
-    axios.get(`http://localhost:5000/api/videos/${videoId}/comments`)
+    const targetId = currentVideo ? currentVideo.id : videoId;
+    if (!targetId) return;
+    
+    axios.get(`http://localhost:5000/api/videos/${targetId}/comments`)
       .then(res => setComments(res.data))
       .catch(err => console.error(err));
   };
 
   const handleSave = () => {
-    if (!newComment.trim()) return;
+    const targetId = currentVideo ? currentVideo.id : videoId;
+    if (!newComment.trim() || !targetId) return;
 
     if (editingId) {
       axios.put(`http://localhost:5000/api/videos/${editingId}/comments`, { content: newComment })
@@ -70,7 +76,7 @@ export default function Watch() {
         })
         .catch(err => console.error("更新失敗:", err));
     } else {
-      axios.post(`http://localhost:5000/api/videos/${videoId}/comments`, { content: newComment })
+      axios.post(`http://localhost:5000/api/videos/${targetId}/comments`, { content: newComment })
         .then(() => {
           setNewComment('');
           fetchComments();
