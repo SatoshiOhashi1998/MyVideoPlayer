@@ -5,6 +5,24 @@ import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
 import './VideoPlayer.css';
 
+// 秒数を "hh:mm:ss" に変換するヘルパー
+const formatTime = (seconds) => {
+  const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+  const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+  const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+  return `${h}:${m}:${s}`;
+};
+
+// "hh:mm:ss" を秒数に変換するヘルパー
+const parseTimeToSeconds = (timeString) => {
+  const parts = timeString.split(':');
+  if (parts.length !== 3) return 0;
+  const h = parseInt(parts[0], 10) || 0;
+  const m = parseInt(parts[1], 10) || 0;
+  const s = parseInt(parts[2], 10) || 0;
+  return h * 3600 + m * 60 + s;
+};
+
 export default function VideoPlayer() {
   const navigate = useNavigate();
   const currentVideo = useVideoStore((state) => state.currentVideo);
@@ -20,11 +38,20 @@ export default function VideoPlayer() {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
 
+  // 入力フォーム用の一時的なテキスト状態
+  const [startInput, setStartInput] = useState("00:00:00");
+  const [endInput, setEndInput] = useState("00:00:00");
+
   // 1. 動画が切り替わったときに自動再生
   useEffect(() => {
     if (videoRef.current && currentVideo) {
       videoRef.current.load();
       videoRef.current.play().catch((err) => console.log("自動再生が制限されました", err));
+      // 動画変更時にタイマー入力をリセット
+      setStartTime(0);
+      setEndTime(0);
+      setStartInput("00:00:00");
+      setEndInput("00:00:00");
     }
   }, [currentVideo]);
 
@@ -84,6 +111,19 @@ export default function VideoPlayer() {
     navigate(`/watch?v=${video.id}`);
   };
 
+  // 入力確定時（Blur時）に秒数に変換して反映する
+  const handleStartBlur = () => {
+    const seconds = parseTimeToSeconds(startInput);
+    setStartTime(seconds);
+    setStartInput(formatTime(seconds)); // フォーマットを整形して再セット
+  };
+
+  const handleEndBlur = () => {
+    const seconds = parseTimeToSeconds(endInput);
+    setEndTime(seconds);
+    setEndInput(formatTime(seconds)); // フォーマットを整形して再セット
+  };
+
   return (
     <div className="player-wrapper" style={{ display: 'flex', gap: '20px', padding: '20px' }}>
       <div className="video-player-container" style={{ flex: 1 }}>
@@ -110,9 +150,29 @@ export default function VideoPlayer() {
         </div>
 
         {isSectionLoop && (
-          <div className="section-loop-inputs">
-            <label>開始(秒): <input type="number" onChange={(e) => setStartTime(Number(e.target.value))} /></label>
-            <label>終了(秒): <input type="number" onChange={(e) => setEndTime(Number(e.target.value))} /></label>
+          <div className="section-loop-inputs" style={{ marginTop: '10px' }}>
+            <label style={{ marginRight: '15px' }}>
+              開始: 
+              <input 
+                type="text" 
+                value={startInput} 
+                onChange={(e) => setStartInput(e.target.value)}
+                onBlur={handleStartBlur}
+                placeholder="00:00:00"
+                style={{ width: '90px', textAlign: 'center', marginLeft: '5px' }}
+              />
+            </label>
+            <label>
+              終了: 
+              <input 
+                type="text" 
+                value={endInput} 
+                onChange={(e) => setEndInput(e.target.value)}
+                onBlur={handleEndBlur}
+                placeholder="00:00:00"
+                style={{ width: '90px', textAlign: 'center', marginLeft: '5px' }}
+              />
+            </label>
           </div>
         )}
       </div>
