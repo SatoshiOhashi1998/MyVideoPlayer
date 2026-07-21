@@ -10,7 +10,7 @@
   text-decoration: none;
   color: black;
   display: block;
-  position: relative; /* ボタンの絶対配置用 */
+  position: relative;
 }
 
 .video-link {
@@ -43,15 +43,21 @@
   background: rgba(0, 0, 0, 0.7);
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 4px;
   font-size: 0.8rem;
   cursor: pointer;
-  opacity: 0; /* 最初は隠す */
-  transition: opacity 0.2s;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
 }
 
 /* カードにホバーしたときにボタンを表示 */
 .video-card:hover .add-queue-btn {
   opacity: 1;
+}
+
+/* ★ 追加: 追加完了時のスタイル（ホバーしていなくても表示し、緑色にする） */
+.add-queue-btn.added {
+  opacity: 1;
+  background-color: #2e7d32;
 }
