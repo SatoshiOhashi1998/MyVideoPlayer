@@ -1,4 +1,3 @@
-// src/components/VideoPlayer.jsx
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
@@ -24,7 +23,6 @@ export default function VideoPlayer() {
   const [startInput, setStartInput] = useState("00:00:00");
   const [endInput, setEndInput] = useState("00:00:00");
 
-  // 1. 動画切り替え時の自動再生 & リセット
   useEffect(() => {
     if (videoRef.current && currentVideo) {
       videoRef.current.load();
@@ -36,7 +34,6 @@ export default function VideoPlayer() {
     }
   }, [currentVideo]);
 
-  // 2. 区間リピートの監視
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !isSectionLoop || endTime <= startTime) return;
@@ -51,7 +48,6 @@ export default function VideoPlayer() {
     return () => video.removeEventListener('timeupdate', handleTimeUpdate);
   }, [isSectionLoop, startTime, endTime]);
 
-  // 3. 動画終了時の処理
   const handleVideoEnded = () => {
     if (isLoop) {
       videoRef.current.currentTime = 0;
@@ -61,7 +57,6 @@ export default function VideoPlayer() {
     }
   };
 
-  // 4. 外部からのシーク命令
   useEffect(() => {
     const handleSeek = (e) => {
       if (videoRef.current) videoRef.current.currentTime = e.detail;
