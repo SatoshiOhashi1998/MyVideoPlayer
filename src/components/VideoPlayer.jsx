@@ -11,6 +11,7 @@ export default function VideoPlayer() {
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
+  const reorderQueue = useQueueStore((state) => state.reorderQueue);
   const playNext = useQueueStore((state) => state.playNext);
   
   const videoRef = useRef(null);
@@ -22,6 +23,8 @@ export default function VideoPlayer() {
 
   const [startInput, setStartInput] = useState("00:00:00");
   const [endInput, setEndInput] = useState("00:00:00");
+
+  const [draggedIndex, setDraggedIndex] = useState(null);
 
   useEffect(() => {
     if (videoRef.current && currentVideo) {
@@ -64,6 +67,23 @@ export default function VideoPlayer() {
     window.addEventListener('seekTo', handleSeek);
     return () => window.removeEventListener('seekTo', handleSeek);
   }, []);
+
+  const handleDragStart = (e, index) => {
+    setDraggedIndex(index);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  };
+
+  const handleDrop = (e, targetIndex) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === targetIndex) return;
+    reorderQueue(draggedIndex, targetIndex);
+    setDraggedIndex(null);
+  };
 
   if (!currentVideo) {
     return <div className="video-player-container">動画を選択してください</div>;
@@ -155,7 +175,13 @@ export default function VideoPlayer() {
           <h3>再生キュー ({queue.length})</h3>
           <ul>
             {queue.map((video, index) => (
-              <li key={video.id || index}>
+              <li 
+                key={video.id || index}
+                draggable
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, index)}
+              >
                 <span onClick={() => handleQueueItemClick(video)}>
                   {video.filetitle}
                 </span>

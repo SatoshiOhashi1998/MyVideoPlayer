@@ -94,6 +94,12 @@
   justify-content: space-between;
   align-items: center;
   transition: background 0.2s;
+  cursor: grab;
+  user-select: none;
+}
+
+.queue-container li:active {
+  cursor: grabbing;
 }
 
 .queue-container li:hover {
