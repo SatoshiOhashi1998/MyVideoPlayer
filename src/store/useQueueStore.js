@@ -1,3 +1,4 @@
+// src/store/useQueueStore.js
 import { create } from 'zustand';
 
 export const useQueueStore = create((set) => ({
