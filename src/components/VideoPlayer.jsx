@@ -93,6 +93,14 @@ export default function VideoPlayer() {
     if (videoRef.current) videoRef.current.currentTime += seconds;
   };
 
+  // ★ 追加: 音量を増減させる関数（0.0 〜 1.0 の間で調整）
+  const changeVolume = (amount) => {
+    if (videoRef.current) {
+      const newVolume = Math.min(Math.max(videoRef.current.volume + amount, 0), 1);
+      videoRef.current.volume = Number(newVolume.toFixed(2));
+    }
+  };
+
   const toggleLoop = () => setIsLoop(!isLoop);
   const toggleSectionLoop = () => setIsSectionLoop(!isSectionLoop);
 
@@ -136,6 +144,9 @@ export default function VideoPlayer() {
         <div className="video-controls">
           <button onClick={() => skip(-10)}>10秒戻る</button>
           <button onClick={() => skip(10)}>10秒進む</button>
+          {/* ★ 追加: 音量調整ボタン */}
+          <button onClick={() => changeVolume(0.1)}>音量 +10%</button>
+          <button onClick={() => changeVolume(-0.1)}>音量 -10%</button>
           <button onClick={toggleLoop} className={isLoop ? 'active' : ''}>
             ループ: {isLoop ? 'ON' : 'OFF'}
           </button>
@@ -168,7 +179,7 @@ export default function VideoPlayer() {
               />
             </label>
           </div>
-          )}
+        )}
       </div>
 
       {queue.length > 0 && (
@@ -188,10 +199,10 @@ export default function VideoPlayer() {
                 </span>
                 <button onClick={() => removeFromQueue(index)}>削除</button>
               </li>
-              ))}
+            ))}
           </ul>
         </div>
-        )}
+      )}
     </div>
-    );
+  );
 }
