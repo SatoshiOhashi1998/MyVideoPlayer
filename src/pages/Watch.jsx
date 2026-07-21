@@ -1,9 +1,22 @@
 // src/pages/Watch.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useVideoStore } from '../store/useVideoStore';
 import './Watch.css';
+
+// タイムスタンプやリンクをHTMLに変換するヘルパー関数
+const parseCommentContent = (text) => {
+  let html = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:blue; text-decoration:underline;">$1</a>');
+  html = html.replace(/(?<!href=")(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:blue;">$1</a>');
+  
+  html = html.replace(/(\d{1,2}:)?\d{1,2}:\d{2}/g, (match) => {
+    const parts = match.split(':').map(Number);
+    const seconds = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : parts[0] * 60 + parts[1];
+    return `<span class="timestamp" data-seconds="${seconds}" style="color:blue; cursor:pointer; text-decoration:underline;">${match}</span>`;
+  });
+  return { __html: html };
+};
 
 export default function Watch() {
   const [searchParams] = useSearchParams();
@@ -17,71 +30,64 @@ export default function Watch() {
   const [newComment, setNewComment] = useState('');
   const [editingId, setEditingId] = useState(null);
 
-  // 1. タイトル更新専用
+  const targetId = currentVideo ? currentVideo.id : videoId;
+
+  // 1. ページのタイトル更新
   useEffect(() => {
     document.title = currentVideo ? `${currentVideo.filetitle} - My Video App` : 'My Video App';
   }, [currentVideo]);
 
-  // 2. コメント取得専用: currentVideo が変わるたびに最新のコメントを取得
-  useEffect(() => {
-    if (currentVideo) {
-      fetchComments();
+  // 2. コメント取得
+  const fetchComments = useCallback(async () => {
+    if (!targetId) return;
+    try {
+      const res = await axios.get(`http://localhost:5000/api/videos/${targetId}/comments`);
+      setComments(res.data);
+    } catch (err) {
+      console.error("コメント取得失敗:", err);
     }
-  }, [currentVideo]);
+  }, [targetId]);
 
-  // 3. 動画情報取得用: URLの videoId が変わった時だけ実行
+  // 3. 動画情報の取得 & コメント更新
   useEffect(() => {
     if (!videoId) return;
 
-    // 現在の動画と同じなら何もしない
-    if (currentVideo && String(currentVideo.id) === String(videoId)) {
-      return;
+    if (!currentVideo || String(currentVideo.id) !== String(videoId)) {
+      axios.get(`http://localhost:5000/api/videos/${videoId}/info`)
+        .then(res => setCurrentVideo(res.data))
+        .catch(err => console.error("動画情報の取得に失敗:", err));
     }
+  }, [videoId, currentVideo, setCurrentVideo]);
 
-    axios.get(`http://localhost:5000/api/videos/${videoId}/info`)
-      .then(res => {
-        setCurrentVideo(res.data);
-      })
-      .catch(err => console.error("動画情報の取得に失敗:", err));
-  }, [videoId, setCurrentVideo]);
+  useEffect(() => {
+    fetchComments();
+  }, [fetchComments]);
 
-  // 4. 初期シーク用: URLのパラメータが変わった時だけ実行
+  // 4. 初期シーク処理
   useEffect(() => {
     if (startTime) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         window.dispatchEvent(new CustomEvent('seekTo', { detail: Number(startTime) }));
       }, 500);
+      return () => clearTimeout(timer);
     }
   }, [videoId, startTime]);
 
-  const fetchComments = () => {
-    const targetId = currentVideo ? currentVideo.id : videoId;
-    if (!targetId) return;
-    
-    axios.get(`http://localhost:5000/api/videos/${targetId}/comments`)
-      .then(res => setComments(res.data))
-      .catch(err => console.error(err));
-  };
-
-  const handleSave = () => {
-    const targetId = currentVideo ? currentVideo.id : videoId;
+  // コメント保存（作成・更新）
+  const handleSave = async () => {
     if (!newComment.trim() || !targetId) return;
 
-    if (editingId) {
-      axios.put(`http://localhost:5000/api/videos/${editingId}/comments`, { content: newComment })
-        .then(() => {
-          setEditingId(null);
-          setNewComment('');
-          fetchComments();
-        })
-        .catch(err => console.error("更新失敗:", err));
-    } else {
-      axios.post(`http://localhost:5000/api/videos/${targetId}/comments`, { content: newComment })
-        .then(() => {
-          setNewComment('');
-          fetchComments();
-        })
-        .catch(err => console.error("投稿失敗:", err));
+    try {
+      if (editingId) {
+        await axios.put(`http://localhost:5000/api/videos/${editingId}/comments`, { content: newComment });
+        setEditingId(null);
+      } else {
+        await axios.post(`http://localhost:5000/api/videos/${targetId}/comments`, { content: newComment });
+      }
+      setNewComment('');
+      fetchComments();
+    } catch (err) {
+      console.error(editingId ? "更新失敗:" : "投稿失敗:", err);
     }
   };
 
@@ -95,23 +101,14 @@ export default function Watch() {
     setNewComment('');
   };
 
-  const handleDelete = (commentId) => {
+  const handleDelete = async (commentId) => {
     if (!window.confirm("本当に削除しますか？")) return;
-    axios.delete(`http://localhost:5000/api/videos/${commentId}/comments`)
-      .then(() => fetchComments())
-      .catch(err => console.error("削除失敗:", err));
-  };
-
-  const createMarkup = (text) => {
-    let html = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:blue; text-decoration:underline;">$1</a>');
-    html = html.replace(/(?<!href=")(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:blue;">$1</a>');
-    
-    html = html.replace(/(\d{1,2}:)?\d{1,2}:\d{2}/g, (match) => {
-      const parts = match.split(':').map(Number);
-      const seconds = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : parts[0] * 60 + parts[1];
-      return `<span class="timestamp" data-seconds="${seconds}" style="color:blue; cursor:pointer; text-decoration:underline;">${match}</span>`;
-    });
-    return { __html: html };
+    try {
+      await axios.delete(`http://localhost:5000/api/videos/${commentId}/comments`);
+      fetchComments();
+    } catch (err) {
+      console.error("削除失敗:", err);
+    }
   };
 
   const handleContentClick = (e) => {
@@ -144,7 +141,7 @@ export default function Watch() {
           {comments.map(c => (
             <div key={c.id} className="comment-item">
               <div className="comment-content">
-                <div className="comment-text" dangerouslySetInnerHTML={createMarkup(c.content)} />
+                <div className="comment-text" dangerouslySetInnerHTML={parseCommentContent(c.content)} />
                 <small className="comment-date">{c.created_at}</small>
               </div>
               <div className="comment-actions">
