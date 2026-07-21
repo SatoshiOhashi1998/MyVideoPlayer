@@ -102,7 +102,8 @@ export default function VideoPlayer() {
     }
   };
 
-  const handleQueueItemClick = (video) => {
+  const handleQueueItemClick = (video, index) => {
+    removeFromQueue(index);
     setCurrentVideo(video);
     navigate(`/watch?v=${video.id}`);
   };
@@ -167,7 +168,7 @@ export default function VideoPlayer() {
               />
             </label>
           </div>
-        )}
+          )}
       </div>
 
       {queue.length > 0 && (
@@ -182,15 +183,15 @@ export default function VideoPlayer() {
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, index)}
               >
-                <span onClick={() => handleQueueItemClick(video)}>
+                <span onClick={() => handleQueueItemClick(video, index)}>
                   {video.filetitle}
                 </span>
                 <button onClick={() => removeFromQueue(index)}>削除</button>
               </li>
-            ))}
+              ))}
           </ul>
         </div>
-      )}
+        )}
     </div>
-  );
+    );
 }
