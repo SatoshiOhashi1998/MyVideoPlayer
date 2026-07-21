@@ -1,22 +1,10 @@
-// src/pages/Watch.jsx
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useVideoStore } from '../store/useVideoStore';
+import CommentForm from '../components/CommentForm';
+import CommentList from '../components/CommentList';
 import './Watch.css';
-
-// タイムスタンプやリンクをHTMLに変換するヘルパー関数
-const parseCommentContent = (text) => {
-  let html = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:blue; text-decoration:underline;">$1</a>');
-  html = html.replace(/(?<!href=")(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:blue;">$1</a>');
-  
-  html = html.replace(/(\d{1,2}:)?\d{1,2}:\d{2}/g, (match) => {
-    const parts = match.split(':').map(Number);
-    const seconds = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : parts[0] * 60 + parts[1];
-    return `<span class="timestamp" data-seconds="${seconds}" style="color:blue; cursor:pointer; text-decoration:underline;">${match}</span>`;
-  });
-  return { __html: html };
-};
 
 export default function Watch() {
   const [searchParams] = useSearchParams();
@@ -32,12 +20,10 @@ export default function Watch() {
 
   const targetId = currentVideo ? currentVideo.id : videoId;
 
-  // 1. ページのタイトル更新
   useEffect(() => {
     document.title = currentVideo ? `${currentVideo.filetitle} - My Video App` : 'My Video App';
   }, [currentVideo]);
 
-  // 2. コメント取得
   const fetchComments = useCallback(async () => {
     if (!targetId) return;
     try {
@@ -48,7 +34,6 @@ export default function Watch() {
     }
   }, [targetId]);
 
-  // 3. 動画情報の取得 & コメント更新
   useEffect(() => {
     if (!videoId) return;
 
@@ -63,7 +48,6 @@ export default function Watch() {
     fetchComments();
   }, [fetchComments]);
 
-  // 4. 初期シーク処理
   useEffect(() => {
     if (startTime) {
       const timer = setTimeout(() => {
@@ -73,7 +57,6 @@ export default function Watch() {
     }
   }, [videoId, startTime]);
 
-  // コメント保存（作成・更新）
   const handleSave = async () => {
     if (!newComment.trim() || !targetId) return;
 
@@ -120,38 +103,19 @@ export default function Watch() {
 
   return (
     <div className="watch-container">
-      <div className="comments-section" onClick={handleContentClick}>
-        <h3>{comments.length} 件のコメント</h3>
-        
-        <div className="comment-input-area">
-          <textarea 
-            value={newComment} 
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder={editingId ? "コメントを編集..." : "コメントを追加..."}
-          />
-          <div>
-            <button onClick={handleSave}>
-              {editingId ? "更新" : "投稿"}
-            </button>
-            {editingId && <button onClick={cancelEdit} style={{marginLeft: '10px'}}>キャンセル</button>}
-          </div>
-        </div>
-
-        <div className="comments-list">
-          {comments.map(c => (
-            <div key={c.id} className="comment-item">
-              <div className="comment-content">
-                <div className="comment-text" dangerouslySetInnerHTML={parseCommentContent(c.content)} />
-                <small className="comment-date">{c.created_at}</small>
-              </div>
-              <div className="comment-actions">
-                <button onClick={() => startEdit(c)}>編集</button>
-                <button onClick={() => handleDelete(c.id)}>削除</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <CommentForm 
+        newComment={newComment}
+        setNewComment={setNewComment}
+        editingId={editingId}
+        onSave={handleSave}
+        onCancel={cancelEdit}
+      />
+      <CommentList 
+        comments={comments}
+        onEdit={startEdit}
+        onDelete={handleDelete}
+        onContentClick={handleContentClick}
+      />
     </div>
   );
 }
