@@ -27,13 +27,25 @@ export default function VideoPlayer() {
   const [draggedIndex, setDraggedIndex] = useState(null);
 
   useEffect(() => {
-    if (videoRef.current && currentVideo) {
-      videoRef.current.load();
-      videoRef.current.play().catch((err) => console.log("自動再生が制限されました", err));
+    const video = videoRef.current;
+    if (video && currentVideo) {
+      video.load();
+      video.play().catch((err) => console.log("自動再生が制限されました", err));
+      
       setStartTime(0);
-      setEndTime(0);
       setStartInput("00:00:00");
-      setEndInput("00:00:00");
+
+      const handleLoadedMetadata = () => {
+        const duration = video.duration || 0;
+        setEndTime(duration);
+        setEndInput(formatTime(duration));
+      };
+
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+      return () => {
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      };
     }
   }, [currentVideo]);
 
@@ -93,7 +105,6 @@ export default function VideoPlayer() {
     if (videoRef.current) videoRef.current.currentTime += seconds;
   };
 
-  // ★ 追加: 音量を増減させる関数（0.0 〜 1.0 の間で調整）
   const changeVolume = (amount) => {
     if (videoRef.current) {
       const newVolume = Math.min(Math.max(videoRef.current.volume + amount, 0), 1);
@@ -144,7 +155,6 @@ export default function VideoPlayer() {
         <div className="video-controls">
           <button onClick={() => skip(-10)}>10秒戻る</button>
           <button onClick={() => skip(10)}>10秒進む</button>
-          {/* ★ 追加: 音量調整ボタン */}
           <button onClick={() => changeVolume(0.1)}>音量 +10%</button>
           <button onClick={() => changeVolume(-0.1)}>音量 -10%</button>
           <button onClick={toggleLoop} className={isLoop ? 'active' : ''}>
