@@ -131,12 +131,24 @@ export default function VideoPlayer() {
     const seconds = parseTimeToSeconds(startInput);
     setStartTime(seconds);
     setStartInput(formatTime(seconds));
+
+    if (videoRef.current) {
+      if (videoRef.current.currentTime < seconds || (endTime > 0 && videoRef.current.currentTime > endTime)) {
+        videoRef.current.currentTime = seconds;
+      }
+    }
   };
 
   const handleEndBlur = () => {
     const seconds = parseTimeToSeconds(endInput);
     setEndTime(seconds);
     setEndInput(formatTime(seconds));
+
+    if (videoRef.current) {
+      if (videoRef.current.currentTime > seconds || videoRef.current.currentTime < startTime) {
+        videoRef.current.currentTime = startTime;
+      }
+    }
   };
 
   return (
