@@ -6,11 +6,35 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-node_modules
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs and coverage
+lib-cov
+coverage
+*.lcov
+.nyc_output
+
+# Build & Dependency directories
+node_modules/
 dist
 dist-ssr
-*.local
+build/Release
+jspm_packages/
+web_modules/
+
+# Environment variables (ローカル環境変数ファイル)
+.env
+.env.*
+!.env.example
+
+# TypeScript cache
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -23,4 +47,16 @@ dist-ssr
 *.sln
 *.sw?
 
-.env
+# Optional caches
+.npm
+.eslintcache
+.stylelintcache
+.node_repl_history
+.cache
+.parcel-cache
+.pnpm-store
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
