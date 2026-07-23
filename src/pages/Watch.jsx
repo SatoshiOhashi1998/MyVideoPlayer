@@ -35,13 +35,23 @@ export default function Watch() {
     }
   }, [targetId]);
 
-  useEffect(() => {
+useEffect(() => {
     if (!videoId) return;
 
     if (!currentVideo || String(currentVideo.id) !== String(videoId)) {
+      // 1. まず動画として取得を試みる
       axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${videoId}/info`)
-        .then(res => setCurrentVideo(res.data))
-        .catch(err => console.error("動画情報の取得に失敗:", err));
+        .then(res => {
+          setCurrentVideo({ ...res.data, type: 'video' });
+        })
+        .catch(() => {
+          // 2. 失敗したら音楽（音声）として取得を試みる
+          axios.get(`${import.meta.env.VITE_API_AUDIO_BASE_URL}${import.meta.env.VITE_ALL_AUDIO_DATA}/${videoId}/info`)
+            .then(res => {
+              setCurrentVideo({ ...res.data, type: 'audio' });
+            })
+            .catch(err => console.error("メディア情報の取得に失敗:", err));
+        });
     }
   }, [videoId, currentVideo, setCurrentVideo]);
 

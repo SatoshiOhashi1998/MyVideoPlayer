@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Watch from './pages/Watch';
-import VideoPlayer from './components/VideoPlayer';
+import UniversalPlayer from './components/UniversalPlayer';
 import Header from './components/Header';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <div className="app-container">
         <Header />
-        <VideoPlayer />
+        <UniversalPlayer />
         <main style={{ padding: '20px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
         </main>
       </div>
     </BrowserRouter>
-    );
+  );
 }
 
 export default App;
