@@ -161,7 +161,7 @@ export default function VideoPlayer() {
           width="100%"
           controls
           onEnded={handleVideoEnded}
-          src={`http://localhost:5000/static${currentVideo.dirpath}/${currentVideo.filename}`}
+          src={`${import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}
         />
 
         <div className="video-controls">
