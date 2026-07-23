@@ -27,7 +27,7 @@ export default function Watch() {
   const fetchComments = useCallback(async () => {
     if (!targetId) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/videos/${targetId}/comments`);
+      const res = await axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${targetId}/comments`);
       setComments(res.data);
     } catch (err) {
       console.error("コメント取得失敗:", err);
@@ -38,7 +38,7 @@ export default function Watch() {
     if (!videoId) return;
 
     if (!currentVideo || String(currentVideo.id) !== String(videoId)) {
-      axios.get(`http://localhost:5000/api/videos/${videoId}/info`)
+      axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${videoId}/info`)
         .then(res => setCurrentVideo(res.data))
         .catch(err => console.error("動画情報の取得に失敗:", err));
     }
@@ -62,10 +62,10 @@ export default function Watch() {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/videos/${editingId}/comments`, { content: newComment });
+        await axios.put(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${editingId}/comments`, { content: newComment });
         setEditingId(null);
       } else {
-        await axios.post(`http://localhost:5000/api/videos/${targetId}/comments`, { content: newComment });
+        await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${targetId}/comments`, { content: newComment });
       }
       setNewComment('');
       fetchComments();
@@ -87,7 +87,7 @@ export default function Watch() {
   const handleDelete = async (commentId) => {
     if (!window.confirm("本当に削除しますか？")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/videos/${commentId}/comments`);
+      await axios.delete(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${commentId}/comments`);
       fetchComments();
     } catch (err) {
       console.error("削除失敗:", err);

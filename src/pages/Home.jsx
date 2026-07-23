@@ -17,7 +17,7 @@ export default function Home() {
   const [addedId, setAddedId] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/videos')
+    axios.get(import.meta.env.VITE_API_VIDEO_BASE_URL + import.meta.env.VITE_ALL_VIDEO_DATA)
       .then((response) => {
         setVideos(response.data.items);
       })
