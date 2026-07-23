@@ -1,3 +1,4 @@
+// src/pages/Watch.jsx
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';

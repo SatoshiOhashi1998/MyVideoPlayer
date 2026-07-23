@@ -16,7 +16,7 @@ export default function VideoPlayer() {
   const playNext = useQueueStore((state) => state.playNext);
   
   const videoRef = useRef(null);
-  const prevVideoIdRef = useRef(null); // ★ 追加: 前回と同じ動画かの判定用
+  const prevVideoIdRef = useRef(null);
 
   const [isLoop, setIsLoop] = useState(false);
   const [isSectionLoop, setIsSectionLoop] = useState(false);
@@ -28,10 +28,24 @@ export default function VideoPlayer() {
 
   const [draggedIndex, setDraggedIndex] = useState(null);
 
+  // ★ 追加: 再生位置をローカルストレージに自動保存
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !currentVideo) return;
+
+    const handleTimeUpdate = () => {
+      if (video.currentTime > 2) {
+        localStorage.setItem(`resume_time_${currentVideo.id}`, video.currentTime);
+      }
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
+  }, [currentVideo]);
+
   useEffect(() => {
     const video = videoRef.current;
     if (video && currentVideo) {
-      // ★ 追加: 直前と同じ動画の場合は再読み込みを防ぐ
       if (prevVideoIdRef.current === currentVideo.id) {
         return;
       }
@@ -47,6 +61,15 @@ export default function VideoPlayer() {
         const duration = video.duration || 0;
         setEndTime(duration);
         setEndInput(formatTime(duration));
+
+        // ★ 追加: 保存されたレジューム位置の復元（URLの?t=がない場合のみ）
+        const urlParams = new URLSearchParams(window.location.search);
+        if (!urlParams.get('t')) {
+          const savedTime = localStorage.getItem(`resume_time_${currentVideo.id}`);
+          if (savedTime && Number(savedTime) < duration - 2) {
+            video.currentTime = Number(savedTime);
+          }
+        }
       };
 
       video.addEventListener('loadedmetadata', handleLoadedMetadata);
