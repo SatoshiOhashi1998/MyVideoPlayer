@@ -8,8 +8,11 @@ import './Home.css';
 
 export default function Home() {
   const [items, setItems] = useState([]);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
+  const page = parseInt(searchParams.get('page') || '1', 10);
+  const limit = 45;
+
   const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
   const addToQueue = useQueueStore((state) => state.addToQueue);
@@ -21,7 +24,7 @@ export default function Home() {
       try {
         const [videoRes, musicRes] = await Promise.all([
           axios.get(import.meta.env.VITE_API_VIDEO_BASE_URL + import.meta.env.VITE_ALL_VIDEO_DATA),
-          axios.get(import.meta.env.VITE_API_AUDIO_BASE_URL + (import.meta.env.VITE_ALL_AUDIO_DATA))
+          axios.get(import.meta.env.VITE_API_AUDIO_BASE_URL + import.meta.env.VITE_ALL_AUDIO_DATA)
         ]);
 
         const videos = videoRes.data.items || [];
@@ -40,6 +43,21 @@ export default function Home() {
     item.filetitle.toLowerCase().includes(query.toLowerCase())
   );
 
+  const totalPages = Math.ceil(filteredItems.length / limit) || 1;
+  const startIndex = (page - 1) * limit;
+  const currentItems = filteredItems.slice(startIndex, startIndex + limit);
+
+  const handlePageChange = (newPage) => {
+    const params = new URLSearchParams(searchParams);
+    if (newPage === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', newPage);
+    }
+    setSearchParams(params);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleAddQueue = (e, item) => {
     e.preventDefault();
     addToQueue(item);
@@ -55,7 +73,7 @@ export default function Home() {
       <h1>{query ? `"${query}" の検索結果` : 'メディアライブラリ'}</h1>
       
       <div className="video-grid">
-        {filteredItems.map((item) => {
+        {currentItems.map((item) => {
           const isAdded = addedId === item.id;
 
           return (
@@ -88,6 +106,24 @@ export default function Home() {
           );
         })}
       </div>
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button 
+            disabled={page <= 1} 
+            onClick={() => handlePageChange(page - 1)}
+          >
+            前へ
+          </button>
+          <span>{page} / {totalPages}</span>
+          <button 
+            disabled={page >= totalPages} 
+            onClick={() => handlePageChange(page + 1)}
+          >
+            次へ
+          </button>
+        </div>
+      )}
     </div>
   );
 }
