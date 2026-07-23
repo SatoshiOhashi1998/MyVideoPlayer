@@ -1,3 +1,4 @@
+// src/components/VideoPlayer.jsx
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
@@ -15,6 +16,7 @@ export default function VideoPlayer() {
   const playNext = useQueueStore((state) => state.playNext);
   
   const videoRef = useRef(null);
+  const prevVideoIdRef = useRef(null); // ★ 追加: 前回と同じ動画かの判定用
 
   const [isLoop, setIsLoop] = useState(false);
   const [isSectionLoop, setIsSectionLoop] = useState(false);
@@ -29,6 +31,12 @@ export default function VideoPlayer() {
   useEffect(() => {
     const video = videoRef.current;
     if (video && currentVideo) {
+      // ★ 追加: 直前と同じ動画の場合は再読み込みを防ぐ
+      if (prevVideoIdRef.current === currentVideo.id) {
+        return;
+      }
+      prevVideoIdRef.current = currentVideo.id;
+
       video.load();
       video.play().catch((err) => console.log("自動再生が制限されました", err));
       

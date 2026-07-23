@@ -10,6 +10,7 @@ export default function Home() {
   const [videos, setVideos] = useState([]);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
+  const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
   const addToQueue = useQueueStore((state) => state.addToQueue);
 
@@ -52,7 +53,11 @@ export default function Home() {
               <Link
                 to={`/watch?v=${video.id}`}
                 className="video-link"
-                onClick={() => setCurrentVideo(video)}
+                onClick={() => {
+                  if (currentVideo?.id !== video.id) {
+                    setCurrentVideo(video);
+                  }
+                }}
               >
                 <div className="thumbnail-placeholder">
                   <span>サムネイル</span>
