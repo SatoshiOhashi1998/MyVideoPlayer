@@ -10,6 +10,7 @@ export default function Home() {
   const [items, setItems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
+  const searchType = searchParams.get('type') || 'all';
   const page = parseInt(searchParams.get('page') || '1', 10);
   const limit = 45;
 
@@ -39,9 +40,17 @@ export default function Home() {
     fetchMedia();
   }, []);
 
-  const filteredItems = items.filter((item) =>
-    item.filetitle.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredItems = items.filter((item) => {
+    const matchesQuery = item.filetitle.toLowerCase().includes(query.toLowerCase());
+    
+    if (searchType === 'video') {
+      return matchesQuery && item.type !== 'audio';
+    }
+    if (searchType === 'audio') {
+      return matchesQuery && item.type === 'audio';
+    }
+    return matchesQuery;
+  });
 
   const totalPages = Math.ceil(filteredItems.length / limit) || 1;
   const startIndex = (page - 1) * limit;
