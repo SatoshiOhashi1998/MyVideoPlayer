@@ -5,14 +5,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 export default function Header() {
   const [searchParams] = useSearchParams();
   const [input, setInput] = useState(searchParams.get('q') || '');
-  const [searchType, setSearchType] = useState(searchParams.get('type') || 'all');
+  const [searchType, setSearchType] = useState(searchParams.get('type') || 'default');
   const [showSettings, setShowSettings] = useState(false);
   const settingsRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     setInput(searchParams.get('q') || '');
-    setSearchType(searchParams.get('type') || 'all');
+    setSearchType(searchParams.get('type') || 'default');
   }, [searchParams]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Header() {
     e.preventDefault();
     const params = new URLSearchParams();
     if (input) params.set('q', input);
-    if (searchType && searchType !== 'all') params.set('type', searchType);
+    if (searchType && searchType !== 'default') params.set('type', searchType);
     navigate(`/?${params.toString()}`);
     setShowSettings(false);
   };
@@ -66,7 +66,7 @@ export default function Header() {
           <div ref={settingsRef} style={{ position: 'absolute', top: '45px', right: '50px', background: 'white', border: '1px solid #ccc', borderRadius: '8px', padding: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', zIndex: 100, width: '200px' }}>
             <div style={{ fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>検索対象</div>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', fontSize: '0.9rem', cursor: 'pointer' }}>
-              <input type="radio" name="searchType" value="all" checked={searchType === 'all'} onChange={(e) => setSearchType(e.target.value)} />
+              <input type="radio" name="searchType" value="default" checked={searchType === 'default'} onChange={(e) => setSearchType(e.target.value)} />
               デフォルト
             </label>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', fontSize: '0.9rem', cursor: 'pointer' }}>
