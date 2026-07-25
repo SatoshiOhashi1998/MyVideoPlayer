@@ -33,7 +33,8 @@ export default function YouTubePlayer() {
   const handleQueueItemClick = (video, index) => {
     removeFromQueue(index);
     setCurrentVideo(video);
-    navigate(`/watch?v=${video.id}`);
+    const mediaType = video.type || 'video';
+    navigate(`/watch?v=${video.id}&type=${mediaType}`);
   };
 
   return (
