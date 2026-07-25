@@ -10,6 +10,7 @@ import './Watch.css';
 export default function Watch() {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get('v');
+  const mediaType = searchParams.get('type') || 'video'; // パラメータから type を取得（デフォルトは video）
   const startTime = searchParams.get('t');
   
   const currentVideo = useVideoStore((state) => state.currentVideo);
@@ -35,25 +36,32 @@ export default function Watch() {
     }
   }, [targetId]);
 
-useEffect(() => {
+  // パラメータの type を基に正確なAPIを叩いてデータを取得
+  useEffect(() => {
     if (!videoId) return;
 
-    if (!currentVideo || String(currentVideo.id) !== String(videoId)) {
-      // 1. まず動画として取得を試みる
-      axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${videoId}/info`)
+    if (!currentVideo || String(currentVideo.id) !== String(videoId) || currentVideo.type !== mediaType) {
+      let endpoint = '';
+      
+      // mediaType に応じて叩くAPIを切り替える
+      if (mediaType === 'audio') {
+        endpoint = `${import.meta.env.VITE_API_AUDIO_BASE_URL}${import.meta.env.VITE_ALL_AUDIO_DATA}/${videoId}/info`;
+      } else if (mediaType === 'youtube') {
+        // YouTubeの場合のデータ取得方法に合わせて調整してください（例: 専用のエンドポイントやモックデータ等）
+        // 以下は一例としてYouTube用の情報取得APIを想定しています
+        endpoint = `${import.meta.env.VITE_API_YOUTUBE_BASE_URL || import.meta.env.VITE_API_VIDEO_BASE_URL}/youtube/${videoId}/info`;
+      } else {
+        // デフォルト (video)
+        endpoint = `${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${videoId}/info`;
+      }
+
+      axios.get(endpoint)
         .then(res => {
-          setCurrentVideo({ ...res.data, type: 'video' });
+          setCurrentVideo({ ...res.data, type: mediaType });
         })
-        .catch(() => {
-          // 2. 失敗したら音楽（音声）として取得を試みる
-          axios.get(`${import.meta.env.VITE_API_AUDIO_BASE_URL}${import.meta.env.VITE_ALL_AUDIO_DATA}/${videoId}/info`)
-            .then(res => {
-              setCurrentVideo({ ...res.data, type: 'audio' });
-            })
-            .catch(err => console.error("メディア情報の取得に失敗:", err));
-        });
+        .catch(err => console.error(`${mediaType} メディア情報の取得に失敗:`, err));
     }
-  }, [videoId, currentVideo, setCurrentVideo]);
+  }, [videoId, mediaType, currentVideo, setCurrentVideo]);
 
   useEffect(() => {
     fetchComments();

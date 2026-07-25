@@ -10,7 +10,8 @@ export default function Home() {
   const [items, setItems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
-  const searchType = searchParams.get('type') || 'default';
+  // ★ type から search_type に変更
+  const searchType = searchParams.get('search_type') || 'default';
   const page = parseInt(searchParams.get('page') || '1', 10);
   const limit = 45;
 
@@ -29,15 +30,21 @@ export default function Home() {
             return;
           }
           const res = await axios.get(`${import.meta.env.VITE_API_YOUTUBE_BASE_URL}api/youtube/search?q=${encodeURIComponent(query)}`);
-          setItems(res.data.items || []);
+          
+          // ★ YouTubeのアイテムに type: 'youtube' を確実に付与する
+          const youtubeItems = (res.data.items || []).map(item => ({
+            ...item,
+            type: 'youtube'
+          }));
+          setItems(youtubeItems);
         } else {
           const [videoRes, musicRes] = await Promise.all([
             axios.get(import.meta.env.VITE_API_VIDEO_BASE_URL + import.meta.env.VITE_ALL_VIDEO_DATA),
             axios.get(import.meta.env.VITE_API_AUDIO_BASE_URL + import.meta.env.VITE_ALL_AUDIO_DATA)
           ]);
 
-          const videos = videoRes.data.items || [];
-          const musics = musicRes.data.items || [];
+          const videos = (videoRes.data.items || []).map(item => ({ ...item, type: 'video' }));
+          const musics = (musicRes.data.items || []).map(item => ({ ...item, type: 'audio' }));
 
           setItems([...videos, ...musics]);
         }
@@ -53,10 +60,13 @@ export default function Home() {
     const matchesQuery = item.filetitle.toLowerCase().includes(query.toLowerCase());
     
     if (searchType === 'video') {
-      return matchesQuery && item.type !== 'audio';
+      return matchesQuery && item.type === 'video';
     }
     if (searchType === 'audio') {
       return matchesQuery && item.type === 'audio';
+    }
+    if (searchType === 'youtube') {
+      return matchesQuery && item.type === 'youtube';
     }
     return matchesQuery;
   });
@@ -115,7 +125,7 @@ export default function Home() {
                 </div>
                 <div className="video-info">
                   <h3>{item.filetitle}</h3>
-                  <p className="dir-text">{item.dirpath}</p>
+                  <p className="dir-text">{item.dirpath || ''}</p>
                 </div>
               </Link>
               

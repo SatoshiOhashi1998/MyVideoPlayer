@@ -5,14 +5,15 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 export default function Header() {
   const [searchParams] = useSearchParams();
   const [input, setInput] = useState(searchParams.get('q') || '');
-  const [searchType, setSearchType] = useState(searchParams.get('type') || 'default');
+  // 1. 取得するパラメータ名を search_type に変更
+  const [searchType, setSearchType] = useState(searchParams.get('search_type') || 'default');
   const [showSettings, setShowSettings] = useState(false);
   const settingsRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     setInput(searchParams.get('q') || '');
-    setSearchType(searchParams.get('type') || 'default');
+    setSearchType(searchParams.get('search_type') || 'default');
   }, [searchParams]);
 
   useEffect(() => {
@@ -29,7 +30,8 @@ export default function Header() {
     e.preventDefault();
     const params = new URLSearchParams();
     if (input) params.set('q', input);
-    if (searchType && searchType !== 'default') params.set('type', searchType);
+    // 2. クエリパラメータのキーを search_type に変更
+    if (searchType && searchType !== 'default') params.set('search_type', searchType);
     navigate(`/?${params.toString()}`);
     setShowSettings(false);
   };
