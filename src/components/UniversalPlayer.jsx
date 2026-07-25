@@ -1,18 +1,17 @@
 // src/components/UniversalPlayer.jsx
-import { useSearchParams } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import VideoPlayer from './VideoPlayer';
 import AudioPlayer from './AudioPlayer';
 import YouTubePlayer from './YouTubePlayer';
 
 export default function UniversalPlayer() {
-  const [searchParams] = useSearchParams();
   const currentVideo = useVideoStore((state) => state.currentVideo);
 
+  // 再生中の動画がない場合は何も表示しない
   if (!currentVideo) return null;
 
-  // URLのクエリパラメータ `type` を最優先し、なければストアの `type`、それもなければ 'video'
-  const mediaType = searchParams.get('type') || currentVideo.type || 'video';
+  // 再生データに紐づく type のみで判定する
+  const mediaType = currentVideo.type || 'video';
 
   switch (mediaType) {
     case 'audio':
