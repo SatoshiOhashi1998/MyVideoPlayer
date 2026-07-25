@@ -1,7 +1,9 @@
 // src/components/YouTubePlayer.jsx
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
+import DownloadModal from './DownloadModal'; // ★ モダルをインポート
 
 export default function YouTubePlayer() {
   const navigate = useNavigate();
@@ -10,6 +12,9 @@ export default function YouTubePlayer() {
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
   const reorderQueue = useQueueStore((state) => state.reorderQueue);
+
+  // ★ ダウンロードモーダルの開閉ステート
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
 
   if (!currentVideo || currentVideo.type !== 'youtube') return null;
 
@@ -40,7 +45,17 @@ export default function YouTubePlayer() {
   return (
     <div className="player-wrapper">
       <div className="youtube-player-container-wrapper">
-        <h3>YouTube再生中: {currentVideo.filetitle}</h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+          <h3 style={{ margin: 0 }}>YouTube再生中: {currentVideo.filetitle}</h3>
+          
+          {/* ★ ダウンロードボタン */}
+          <button 
+            onClick={() => setIsDownloadOpen(true)}
+            style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid #ccc', background: '#fff', cursor: 'pointer', fontWeight: 500 }}
+          >
+            📥 ダウンロード
+          </button>
+        </div>
 
         <div className="youtube-player-container">
           <iframe
@@ -73,6 +88,13 @@ export default function YouTubePlayer() {
           </ul>
         </div>
       )}
+
+      {/* ★ ダウンロードモーダル */}
+      <DownloadModal 
+        videoId={currentVideo.id} 
+        isOpen={isDownloadOpen} 
+        onClose={() => setIsDownloadOpen(false)} 
+      />
     </div>
   );
 }
