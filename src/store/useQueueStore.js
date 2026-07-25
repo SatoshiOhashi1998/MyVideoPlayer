@@ -32,7 +32,9 @@ export const useQueueStore = create((set) => ({
     const newQueue = state.queue.slice(1);
     
     if (navigate) {
-      navigate(`/watch?v=${nextVideo.id}`);
+      // ★ typeパラメータを確実につけてルーティングする
+      const mediaType = nextVideo.type || 'video';
+      navigate(`/watch?v=${nextVideo.id}&type=${mediaType}`);
     }
     
     setCurrentVideo(nextVideo);
