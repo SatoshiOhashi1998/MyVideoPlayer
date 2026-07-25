@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Watch from './pages/Watch';
 import UniversalPlayer from './components/UniversalPlayer';
 import Header from './components/Header';
+import './App.css'
 
 function App() {
   return (
