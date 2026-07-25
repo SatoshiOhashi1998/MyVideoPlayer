@@ -26,6 +26,7 @@ export default function AudioPlayer() {
   const [endInput, setEndInput] = useState("00:00:00");
   const [draggedIndex, setDraggedIndex] = useState(null);
 
+  // 再生位置の自動保存
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !currentVideo) return;
@@ -40,6 +41,7 @@ export default function AudioPlayer() {
     return () => audio.removeEventListener('timeupdate', handleTimeUpdate);
   }, [currentVideo]);
 
+  // メディア読み込みとレジューム位置の復元
   useEffect(() => {
     const audio = audioRef.current;
     if (audio && currentVideo) {
@@ -71,6 +73,7 @@ export default function AudioPlayer() {
     }
   }, [currentVideo]);
 
+  // ★ 追加: 区間リピート（セクションループ）の監視
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !isSectionLoop || endTime <= startTime) return;
@@ -94,6 +97,14 @@ export default function AudioPlayer() {
     }
   };
 
+  useEffect(() => {
+    const handleSeek = (e) => {
+      if (audioRef.current) audioRef.current.currentTime = e.detail;
+    };
+    window.addEventListener('seekTo', handleSeek);
+    return () => window.removeEventListener('seekTo', handleSeek);
+  }, []);
+
   const skip = (seconds) => {
     if (audioRef.current) audioRef.current.currentTime += seconds;
   };
@@ -102,6 +113,35 @@ export default function AudioPlayer() {
     if (audioRef.current) {
       const newVolume = Math.min(Math.max(audioRef.current.volume + amount, 0), 1);
       audioRef.current.volume = Number(newVolume.toFixed(2));
+    }
+  };
+
+  const toggleLoop = () => setIsLoop(!isLoop);
+  const toggleSectionLoop = () => setIsSectionLoop(!isSectionLoop);
+
+  // ★ 追加: 開始時間の入力確定時の処理
+  const handleStartBlur = () => {
+    const seconds = parseTimeToSeconds(startInput);
+    setStartTime(seconds);
+    setStartInput(formatTime(seconds));
+
+    if (audioRef.current) {
+      if (audioRef.current.currentTime < seconds || (endTime > 0 && audioRef.current.currentTime > endTime)) {
+        audioRef.current.currentTime = seconds;
+      }
+    }
+  };
+
+  // ★ 追加: 終了時間の入力確定時の処理
+  const handleEndBlur = () => {
+    const seconds = parseTimeToSeconds(endInput);
+    setEndTime(seconds);
+    setEndInput(formatTime(seconds));
+
+    if (audioRef.current) {
+      if (audioRef.current.currentTime > seconds || audioRef.current.currentTime < startTime) {
+        audioRef.current.currentTime = startTime;
+      }
     }
   };
 
@@ -152,10 +192,40 @@ export default function AudioPlayer() {
           <button onClick={() => skip(10)}>10秒進む</button>
           <button onClick={() => changeVolume(0.1)}>音量 +10%</button>
           <button onClick={() => changeVolume(-0.1)}>音量 -10%</button>
-          <button onClick={() => setIsLoop(!isLoop)} className={isLoop ? 'active' : ''}>
+          <button onClick={toggleLoop} className={isLoop ? 'active' : ''}>
             ループ: {isLoop ? 'ON' : 'OFF'}
           </button>
+          {/* ★ 追加: 区間リピートボタン */}
+          <button onClick={toggleSectionLoop} className={isSectionLoop ? 'active' : ''}>
+            区間リピート: {isSectionLoop ? 'ON' : 'OFF'}
+          </button>
         </div>
+
+        {/* ★ 追加: 区間リピート設定入力エリア */}
+        {isSectionLoop && (
+          <div className="section-loop-inputs">
+            <label>
+              開始: 
+              <input 
+                type="text" 
+                value={startInput} 
+                onChange={(e) => setStartInput(e.target.value)}
+                onBlur={handleStartBlur}
+                placeholder="00:00:00"
+              />
+            </label>
+            <label>
+              終了: 
+              <input 
+                type="text" 
+                value={endInput} 
+                onChange={(e) => setEndInput(e.target.value)}
+                onBlur={handleEndBlur}
+                placeholder="00:00:00"
+              />
+            </label>
+          </div>
+        )}
       </div>
 
       {queue.length > 0 && (
