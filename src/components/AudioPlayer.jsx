@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
 import { formatTime, parseTimeToSeconds } from '../utils/timeUtils';
-import './AudioPlayer.css';
 
 export default function AudioPlayer() {
   const navigate = useNavigate();
@@ -95,18 +94,6 @@ export default function AudioPlayer() {
     }
   };
 
-  useEffect(() => {
-    const handleSeek = (e) => {
-      if (audioRef.current) audioRef.current.currentTime = e.detail;
-    };
-    window.addEventListener('seekTo', handleSeek);
-    return () => window.removeEventListener('seekTo', handleSeek);
-  }, []);
-
-  if (!currentVideo) {
-    return <div className="audio-player-container">音声を選択してください</div>;
-  }
-
   const skip = (seconds) => {
     if (audioRef.current) audioRef.current.currentTime += seconds;
   };
@@ -118,18 +105,47 @@ export default function AudioPlayer() {
     }
   };
 
+  const handleDragStart = (e, index) => {
+    setDraggedIndex(index);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  };
+
+  const handleDrop = (e, targetIndex) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === targetIndex) return;
+    reorderQueue(draggedIndex, targetIndex);
+    setDraggedIndex(null);
+  };
+
+  const handleQueueItemClick = (video, index) => {
+    removeFromQueue(index);
+    setCurrentVideo(video);
+    navigate(`/watch?v=${video.id}`);
+  };
+
+  if (!currentVideo) {
+    return <div className="empty-state">音声を選択してください</div>;
+  }
+
   return (
     <div className="player-wrapper">
       <div className="audio-player-container">
         <h3>音声再生中: {currentVideo.filetitle}</h3>
 
-        <audio
-          ref={audioRef}
-          width="100%"
-          controls
-          onEnded={handleAudioEnded}
-          src={`${import.meta.env.VITE_AUDIO_SERVER_URL || import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}
-        />
+        <div className="audio-visual-box">
+          <div className="audio-icon-pulse">🎵</div>
+          <audio
+            ref={audioRef}
+            controls
+            onEnded={handleAudioEnded}
+            src={`${import.meta.env.VITE_AUDIO_SERVER_URL || import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}
+          />
+        </div>
 
         <div className="audio-controls">
           <button onClick={() => skip(-10)}>10秒戻る</button>
@@ -147,8 +163,14 @@ export default function AudioPlayer() {
           <h3>再生キュー ({queue.length})</h3>
           <ul>
             {queue.map((video, index) => (
-              <li key={video.id || index}>
-                <span onClick={() => { setCurrentVideo(video); navigate(`/watch?v=${video.id}`); }}>
+              <li 
+                key={video.id || index}
+                draggable
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, index)}
+              >
+                <span onClick={() => handleQueueItemClick(video, index)}>
                   {video.filetitle}
                 </span>
                 <button onClick={() => removeFromQueue(index)}>削除</button>

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
 import { formatTime, parseTimeToSeconds } from '../utils/timeUtils';
-import './VideoPlayer.css';
 
 export default function VideoPlayer() {
   const navigate = useNavigate();
@@ -189,7 +188,6 @@ export default function VideoPlayer() {
 
         <video
           ref={videoRef}
-          width="100%"
           controls
           onEnded={handleVideoEnded}
           src={`${import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}

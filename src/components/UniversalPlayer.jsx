@@ -3,6 +3,7 @@ import { useVideoStore } from '../store/useVideoStore';
 import VideoPlayer from './VideoPlayer';
 import AudioPlayer from './AudioPlayer';
 import YouTubePlayer from './YouTubePlayer';
+import './UniversalPlayer.css';
 
 export default function UniversalPlayer() {
   const currentVideo = useVideoStore((state) => state.currentVideo);
