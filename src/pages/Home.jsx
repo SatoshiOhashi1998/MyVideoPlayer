@@ -93,11 +93,12 @@ export default function Home() {
       <div className="video-grid">
         {currentItems.map((item) => {
           const isAdded = addedId === item.id;
+          const itemType = item.type || 'video';
 
           return (
-            <div key={`${item.type}-${item.id}`} className="video-card">
+            <div key={`${itemType}-${item.id}`} className="video-card">
               <Link
-                to={`/watch?v=${item.id}`}
+                to={`/watch?v=${item.id}&type=${itemType}`}
                 className="video-link"
                 onClick={() => {
                   if (currentVideo?.id !== item.id) {
@@ -109,7 +110,7 @@ export default function Home() {
                   {item.thumbnail ? (
                     <img src={item.thumbnail} alt={item.filetitle} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
-                    <span>{item.type === 'audio' ? '音声' : 'サムネイル'}</span>
+                    <span>{itemType === 'audio' ? '音声' : 'サムネイル'}</span>
                   )}
                 </div>
                 <div className="video-info">
