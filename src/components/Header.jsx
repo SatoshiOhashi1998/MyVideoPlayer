@@ -79,7 +79,7 @@ export default function Header() {
             </label>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', cursor: 'pointer' }}>
               <input type="radio" name="searchType" value="youtube" checked={searchType === 'youtube'} onChange={(e) => setSearchType(e.target.value)} />
-              YouTubeのみ
+              YouTube
             </label>
           </div>
         )}
