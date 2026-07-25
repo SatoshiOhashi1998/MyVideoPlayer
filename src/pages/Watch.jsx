@@ -49,7 +49,7 @@ export default function Watch() {
       } else if (mediaType === 'youtube') {
         // YouTubeの場合のデータ取得方法に合わせて調整してください（例: 専用のエンドポイントやモックデータ等）
         // 以下は一例としてYouTube用の情報取得APIを想定しています
-        endpoint = `${import.meta.env.VITE_API_YOUTUBE_BASE_URL || import.meta.env.VITE_API_VIDEO_BASE_URL}/youtube/${videoId}/info`;
+        endpoint = `${import.meta.env.VITE_API_YOUTUBE_BASE_URL || import.meta.env.VITE_API_VIDEO_BASE_URL}api/youtube/${videoId}/info`;
       } else {
         // デフォルト (video)
         endpoint = `${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${videoId}/info`;
