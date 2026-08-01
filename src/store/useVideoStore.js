@@ -13,21 +13,23 @@ export const useVideoStore = create((set, get) => ({
 
   // タイマーを開始する（秒数を受け取る）
   startTimer: (seconds) => {
-    get().clearTimer(); // 既存のタイマーがあればクリア
+    get().clearTimer();
     
     set({ timerSeconds: seconds });
 
     const timerId = setInterval(() => {
       const current = get().timerSeconds;
       if (current <= 1) {
-        // 時間切れ：再生停止（動画をnullにする等）
+        // 時間切れ：タイマーをクリアするだけで、currentVideo は null にしない
         get().clearTimer();
-        set({ currentVideo: null }); 
+        
+        // タイマーが終了したことを各プレイヤーに伝えるために timerSeconds を 0 にする
+        set({ timerSeconds: 0 }); 
       } else {
         set({ timerSeconds: current - 1 });
       }
     }, 1000);
-
+    
     set({ timerId });
   },
 
