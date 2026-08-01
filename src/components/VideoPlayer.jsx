@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
 import { formatTime, parseTimeToSeconds } from '../utils/timeUtils';
+import SleepTimerControl from './SleepTimerControl'; // ★ 追加
 
 export default function VideoPlayer() {
   const navigate = useNavigate();
   const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
+  const timerSeconds = useVideoStore((state) => state.timerSeconds); // ★ 追加
+  
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
   const reorderQueue = useQueueStore((state) => state.reorderQueue);
@@ -27,7 +30,14 @@ export default function VideoPlayer() {
 
   const [draggedIndex, setDraggedIndex] = useState(null);
 
-  // ★ 追加: 再生位置をローカルストレージに自動保存
+  // ★ 追加: タイマー終了時に動画を一時停止する
+  useEffect(() => {
+    if (timerSeconds === 0 && videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [timerSeconds]);
+
+  // 再生位置をローカルストレージに自動保存
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !currentVideo) return;
@@ -61,7 +71,6 @@ export default function VideoPlayer() {
         setEndTime(duration);
         setEndInput(formatTime(duration));
 
-        // ★ 追加: 保存されたレジューム位置の復元（URLの?t=がない場合のみ）
         const urlParams = new URLSearchParams(window.location.search);
         if (!urlParams.get('t')) {
           const savedTime = localStorage.getItem(`resume_time_${currentVideo.id}`);
@@ -206,6 +215,9 @@ export default function VideoPlayer() {
           </button>
           <button onClick={toggleFullscreen}>全画面</button>
         </div>
+
+        {/* ★ スリープタイマーコントロールを追加 */}
+        <SleepTimerControl />
 
         {isSectionLoop && (
           <div className="section-loop-inputs">

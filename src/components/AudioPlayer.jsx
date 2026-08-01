@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
 import { formatTime, parseTimeToSeconds } from '../utils/timeUtils';
+import SleepTimerControl from './SleepTimerControl'; // ★ 追加
 
 export default function AudioPlayer() {
   const navigate = useNavigate();
   const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
+  const timerSeconds = useVideoStore((state) => state.timerSeconds); // ★ 追加
+  
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
   const reorderQueue = useQueueStore((state) => state.reorderQueue);
@@ -25,6 +28,13 @@ export default function AudioPlayer() {
   const [startInput, setStartInput] = useState("00:00:00");
   const [endInput, setEndInput] = useState("00:00:00");
   const [draggedIndex, setDraggedIndex] = useState(null);
+
+  // ★ 追加: タイマー終了時に音声を一時停止する
+  useEffect(() => {
+    if (timerSeconds === 0 && audioRef.current) {
+      audioRef.current.pause();
+    }
+  }, [timerSeconds]);
 
   // 再生位置の自動保存
   useEffect(() => {
@@ -73,7 +83,7 @@ export default function AudioPlayer() {
     }
   }, [currentVideo]);
 
-  // ★ 追加: 区間リピート（セクションループ）の監視
+  // 区間リピート（セクションループ）の監視
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !isSectionLoop || endTime <= startTime) return;
@@ -119,7 +129,6 @@ export default function AudioPlayer() {
   const toggleLoop = () => setIsLoop(!isLoop);
   const toggleSectionLoop = () => setIsSectionLoop(!isSectionLoop);
 
-  // ★ 追加: 開始時間の入力確定時の処理
   const handleStartBlur = () => {
     const seconds = parseTimeToSeconds(startInput);
     setStartTime(seconds);
@@ -132,7 +141,6 @@ export default function AudioPlayer() {
     }
   };
 
-  // ★ 追加: 終了時間の入力確定時の処理
   const handleEndBlur = () => {
     const seconds = parseTimeToSeconds(endInput);
     setEndTime(seconds);
@@ -195,13 +203,14 @@ export default function AudioPlayer() {
           <button onClick={toggleLoop} className={isLoop ? 'active' : ''}>
             ループ: {isLoop ? 'ON' : 'OFF'}
           </button>
-          {/* ★ 追加: 区間リピートボタン */}
           <button onClick={toggleSectionLoop} className={isSectionLoop ? 'active' : ''}>
             区間リピート: {isSectionLoop ? 'ON' : 'OFF'}
           </button>
         </div>
 
-        {/* ★ 追加: 区間リピート設定入力エリア */}
+        {/* ★ スリープタイマーコントロールを追加 */}
+        <SleepTimerControl />
+
         {isSectionLoop && (
           <div className="section-loop-inputs">
             <label>

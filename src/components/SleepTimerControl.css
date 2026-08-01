@@ -1,0 +1,71 @@
+/* src/components/SleepTimerControl.css */
+.sleep-timer-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.timer-active {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.timer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sleep-timer-container button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  background: #444;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.sleep-timer-container button:hover {
+  background: #555;
+}
+
+.timer-active button {
+  background: #ff4d4d;
+}
+
+.timer-active button:hover {
+  background: #ff3333;
+}
+
+.timer-custom-form {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 4px;
+}
+
+.timer-custom-form input {
+  width: 45px;
+  padding: 3px 6px;
+  background: #333;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.timer-custom-form input::-webkit-inner-spin-button,
+.timer-custom-form input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
