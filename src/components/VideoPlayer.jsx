@@ -1,123 +1,38 @@
 // src/components/VideoPlayer.jsx
-import { useRef, useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
-import { formatTime, parseTimeToSeconds } from '../utils/timeUtils';
-import SleepTimerControl from './SleepTimerControl'; // ★ 追加
+import { usePlayer } from '../hooks/usePlayer';
+import SleepTimerControl from './SleepTimerControl';
 
 export default function VideoPlayer() {
   const navigate = useNavigate();
   const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
-  const timerSeconds = useVideoStore((state) => state.timerSeconds); // ★ 追加
   
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
   const reorderQueue = useQueueStore((state) => state.reorderQueue);
-  const playNext = useQueueStore((state) => state.playNext);
-  
-  const videoRef = useRef(null);
-  const prevVideoIdRef = useRef(null);
-
-  const [isLoop, setIsLoop] = useState(false);
-  const [isSectionLoop, setIsSectionLoop] = useState(false);
-  const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(0);
-
-  const [startInput, setStartInput] = useState("00:00:00");
-  const [endInput, setEndInput] = useState("00:00:00");
 
   const [draggedIndex, setDraggedIndex] = useState(null);
 
-  // ★ 追加: タイマー終了時に動画を一時停止する
-  useEffect(() => {
-    if (timerSeconds === 0 && videoRef.current) {
-      videoRef.current.pause();
-    }
-  }, [timerSeconds]);
-
-  // 再生位置をローカルストレージに自動保存
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !currentVideo) return;
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime > 2) {
-        localStorage.setItem(`resume_time_${currentVideo.id}`, video.currentTime);
-      }
-    };
-
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
-  }, [currentVideo]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video && currentVideo) {
-      if (prevVideoIdRef.current === currentVideo.id) {
-        return;
-      }
-      prevVideoIdRef.current = currentVideo.id;
-
-      video.load();
-      video.play().catch((err) => console.log("自動再生が制限されました", err));
-      
-      setStartTime(0);
-      setStartInput("00:00:00");
-
-      const handleLoadedMetadata = () => {
-        const duration = video.duration || 0;
-        setEndTime(duration);
-        setEndInput(formatTime(duration));
-
-        const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.get('t')) {
-          const savedTime = localStorage.getItem(`resume_time_${currentVideo.id}`);
-          if (savedTime && Number(savedTime) < duration - 2) {
-            video.currentTime = Number(savedTime);
-          }
-        }
-      };
-
-      video.addEventListener('loadedmetadata', handleLoadedMetadata);
-
-      return () => {
-        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      };
-    }
-  }, [currentVideo]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !isSectionLoop || endTime <= startTime) return;
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= endTime) {
-        video.currentTime = startTime;
-      }
-    };
-
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
-  }, [isSectionLoop, startTime, endTime]);
-
-  const handleVideoEnded = () => {
-    if (isLoop) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    } else if (!isSectionLoop) {
-      playNext(setCurrentVideo, navigate);
-    }
-  };
-
-  useEffect(() => {
-    const handleSeek = (e) => {
-      if (videoRef.current) videoRef.current.currentTime = e.detail;
-    };
-    window.addEventListener('seekTo', handleSeek);
-    return () => window.removeEventListener('seekTo', handleSeek);
-  }, []);
+  const {
+    mediaRef: videoRef,
+    isLoop,
+    setIsLoop,
+    isSectionLoop,
+    setIsSectionLoop,
+    startInput,
+    setStartInput,
+    handleStartBlur,
+    endInput,
+    setEndInput,
+    handleEndBlur,
+    handleEnded,
+    skip,
+    changeVolume
+  } = usePlayer('resume_time');
 
   const handleDragStart = (e, index) => {
     setDraggedIndex(index);
@@ -136,57 +51,19 @@ export default function VideoPlayer() {
     setDraggedIndex(null);
   };
 
-  if (!currentVideo) {
-    return <div className="video-player-container">動画を選択してください</div>;
-  }
-
-  const skip = (seconds) => {
-    if (videoRef.current) videoRef.current.currentTime += seconds;
-  };
-
-  const changeVolume = (amount) => {
-    if (videoRef.current) {
-      const newVolume = Math.min(Math.max(videoRef.current.volume + amount, 0), 1);
-      videoRef.current.volume = Number(newVolume.toFixed(2));
-    }
-  };
-
-  const toggleLoop = () => setIsLoop(!isLoop);
-  const toggleSectionLoop = () => setIsSectionLoop(!isSectionLoop);
-
-  const toggleFullscreen = () => {
-    if (videoRef.current?.requestFullscreen) {
-      videoRef.current.requestFullscreen();
-    }
-  };
-
   const handleQueueItemClick = (video, index) => {
     removeFromQueue(index);
     setCurrentVideo(video);
     navigate(`/watch?v=${video.id}`);
   };
 
-  const handleStartBlur = () => {
-    const seconds = parseTimeToSeconds(startInput);
-    setStartTime(seconds);
-    setStartInput(formatTime(seconds));
+  if (!currentVideo) {
+    return <div className="video-player-container">動画を選択してください</div>;
+  }
 
-    if (videoRef.current) {
-      if (videoRef.current.currentTime < seconds || (endTime > 0 && videoRef.current.currentTime > endTime)) {
-        videoRef.current.currentTime = seconds;
-      }
-    }
-  };
-
-  const handleEndBlur = () => {
-    const seconds = parseTimeToSeconds(endInput);
-    setEndTime(seconds);
-    setEndInput(formatTime(seconds));
-
-    if (videoRef.current) {
-      if (videoRef.current.currentTime > seconds || videoRef.current.currentTime < startTime) {
-        videoRef.current.currentTime = startTime;
-      }
+  const toggleFullscreen = () => {
+    if (videoRef.current?.requestFullscreen) {
+      videoRef.current.requestFullscreen();
     }
   };
 
@@ -198,7 +75,7 @@ export default function VideoPlayer() {
         <video
           ref={videoRef}
           controls
-          onEnded={handleVideoEnded}
+          onEnded={handleEnded}
           src={`${import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}
         />
 
@@ -207,16 +84,15 @@ export default function VideoPlayer() {
           <button onClick={() => skip(10)}>10秒進む</button>
           <button onClick={() => changeVolume(0.1)}>音量 +10%</button>
           <button onClick={() => changeVolume(-0.1)}>音量 -10%</button>
-          <button onClick={toggleLoop} className={isLoop ? 'active' : ''}>
+          <button onClick={setIsLoop} className={isLoop ? 'active' : ''}>
             ループ: {isLoop ? 'ON' : 'OFF'}
           </button>
-          <button onClick={toggleSectionLoop} className={isSectionLoop ? 'active' : ''}>
+          <button onClick={setIsSectionLoop} className={isSectionLoop ? 'active' : ''}>
             区間リピート: {isSectionLoop ? 'ON' : 'OFF'}
           </button>
           <button onClick={toggleFullscreen}>全画面</button>
         </div>
 
-        {/* ★ スリープタイマーコントロールを追加 */}
         <SleepTimerControl />
 
         {isSectionLoop && (
