@@ -46,7 +46,11 @@
 }
 
 .comment-content { flex-grow: 1; }
-.comment-text { margin: 0 0 5px 0; font-size: 0.95rem; }
+.comment-text { 
+  margin: 0 0 5px 0; 
+  font-size: 0.95rem; 
+  white-space: pre-wrap; 
+}
 .comment-date { color: #888; display: block; }
 
 /* 編集・削除ボタンの右寄せコンテナ */
