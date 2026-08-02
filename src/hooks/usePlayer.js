@@ -126,7 +126,17 @@ export function usePlayer(storagePrefix) {
   return {
     mediaRef,
     isLoop, setIsLoop: () => setIsLoop(!isLoop),
-    isSectionLoop, setIsSectionLoop: () => setIsSectionLoop(!isSectionLoop),
+    isSectionLoop, 
+    setIsSectionLoop: () => {
+      const nextState = !isSectionLoop;
+      setIsSectionLoop(nextState);
+      // ONにした瞬間、メディアが読み込まれていれば終了時間を全体の長さにセットする
+      if (nextState && mediaRef.current) {
+        const duration = mediaRef.current.duration || 0;
+        setEndTime(duration);
+        setEndInput(formatTime(duration));
+      }
+    },
     startInput, setStartInput, handleStartBlur,
     endInput, setEndInput, handleEndBlur,
     handleEnded, skip, changeVolume
