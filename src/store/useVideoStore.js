@@ -7,7 +7,7 @@ export const useVideoStore = create((set, get) => ({
   timerId: null,      // setIntervalのID
 
   setCurrentVideo: (video) => {
-    get().clearTimer(); // 動画切り替え時にタイマーをリセット
+    // 動画切り替え時にタイマーをリセットしないように削除
     set({ currentVideo: video });
   },
 
