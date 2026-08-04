@@ -48,7 +48,7 @@ export default function YouTubePlayer() {
         playerRef.current = new window.YT.Player(playerContainerRef.current, {
           videoId: currentVideo.id,
           playerVars: {
-            autoplay: 1,
+            autoplay: 0,
           },
           events: {
             onStateChange: (event) => {
