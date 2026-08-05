@@ -10,7 +10,7 @@ import './Watch.css';
 export default function Watch() {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get('v');
-  const mediaType = searchParams.get('type') || 'video'; // パラメータから type を取得（デフォルトは video）
+  const mediaType = searchParams.get('type') || 'video';
   const startTime = searchParams.get('t');
   
   const currentVideo = useVideoStore((state) => state.currentVideo);
@@ -26,32 +26,30 @@ export default function Watch() {
     document.title = currentVideo ? `${currentVideo.filetitle} - My Video App` : 'My Video App';
   }, [currentVideo]);
 
+  // 統合されたAPIからコメントを取得（mediaTypeをクエリパラメータで渡す）
   const fetchComments = useCallback(async () => {
     if (!targetId) return;
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${targetId}/comments`);
+      const res = await axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/items/${targetId}/comments`, {
+        params: { type: mediaType }
+      });
       setComments(res.data);
     } catch (err) {
       console.error("コメント取得失敗:", err);
     }
-  }, [targetId]);
+  }, [targetId, mediaType]);
 
-  // パラメータの type を基に正確なAPIを叩いてデータを取得
   useEffect(() => {
     if (!videoId) return;
 
     if (!currentVideo || String(currentVideo.id) !== String(videoId) || currentVideo.type !== mediaType) {
       let endpoint = '';
       
-      // mediaType に応じて叩くAPIを切り替える
       if (mediaType === 'audio') {
         endpoint = `${import.meta.env.VITE_API_AUDIO_BASE_URL}${import.meta.env.VITE_ALL_AUDIO_DATA}/${videoId}/info`;
       } else if (mediaType === 'youtube') {
-        // YouTubeの場合のデータ取得方法に合わせて調整してください（例: 専用のエンドポイントやモックデータ等）
-        // 以下は一例としてYouTube用の情報取得APIを想定しています
         endpoint = `${import.meta.env.VITE_API_YOUTUBE_BASE_URL || import.meta.env.VITE_API_VIDEO_BASE_URL}api/youtube/${videoId}/info`;
       } else {
-        // デフォルト (video)
         endpoint = `${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${videoId}/info`;
       }
 
@@ -81,10 +79,15 @@ export default function Watch() {
 
     try {
       if (editingId) {
-        await axios.put(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${editingId}/comments`, { content: newComment });
+        // 編集時は /api/comments/<id> を叩く
+        await axios.put(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/comments/${editingId}`, { content: newComment });
         setEditingId(null);
       } else {
-        await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${targetId}/comments`, { content: newComment });
+        // 新規投稿時は /api/items/<id>/comments に mediaType も含めてPOST
+        await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/items/${targetId}/comments`, { 
+          content: newComment,
+          media_type: mediaType 
+        });
       }
       setNewComment('');
       fetchComments();
@@ -106,7 +109,8 @@ export default function Watch() {
   const handleDelete = async (commentId) => {
     if (!window.confirm("本当に削除しますか？")) return;
     try {
-      await axios.delete(`${import.meta.env.VITE_API_VIDEO_BASE_URL}${import.meta.env.VITE_ALL_VIDEO_DATA}/${commentId}/comments`);
+      // 削除時は /api/comments/<id> を叩く
+      await axios.delete(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/comments/${commentId}`);
       fetchComments();
     } catch (err) {
       console.error("削除失敗:", err);
