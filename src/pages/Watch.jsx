@@ -30,7 +30,7 @@ export default function Watch() {
   const fetchComments = useCallback(async () => {
     if (!targetId) return;
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/items/${targetId}/comments`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/comments/${targetId}`, {
         params: { type: mediaType }
       });
       setComments(res.data);
@@ -84,7 +84,7 @@ export default function Watch() {
         setEditingId(null);
       } else {
         // 新規投稿時は /api/items/<id>/comments に mediaType も含めてPOST
-        await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/items/${targetId}/comments`, { 
+        await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/comments/${targetId}`, { 
           content: newComment,
           media_type: mediaType 
         });
