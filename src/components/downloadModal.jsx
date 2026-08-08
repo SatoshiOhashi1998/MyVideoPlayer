@@ -32,7 +32,7 @@ export default function DownloadModal({ videoId, isOpen, onClose }) {
   // 保存先ディレクトリの一覧をバックエンドから取得 (GET)
   useEffect(() => {
     if (isOpen) {
-      axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}/downloadVideo`)
+      axios.get(`${import.meta.env.VITE_API_VIDEO_BASE_URL}/api/youtube/download`)
         .then(res => {
           setSaveDirs(res.data || []);
           if (res.data && res.data.length > 0) {
