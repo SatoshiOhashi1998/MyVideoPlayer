@@ -1,4 +1,4 @@
-.watch-container { padding: 20px; max-width: 800px; margin: 0 auto;}
+.watch-container { padding: 20px; max-width: 800px; margin: 0 auto; }
 
 .comment-input-area { 
   margin-bottom: 20px; 
@@ -19,7 +19,7 @@
   box-sizing: border-box;
 }
 
-/* 送信ボタンのスタイル */
+/* 送信ボタンのスタイル（右寄せを維持） */
 .comment-input-area button { 
   align-self: flex-end; 
   padding: 8px 20px; 
@@ -34,7 +34,13 @@
 
 .comment-input-area button:hover { background-color: #0556bf; }
 
-.comments-list { display: flex; flex-direction: column; gap: 15px; }
+/* コメントリスト（テキストと配置を左揃えに指定） */
+.comments-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  text-align: left;
+}
 
 /* コメントアイテムのレイアウト */
 .comment-item { 
@@ -43,15 +49,26 @@
   display: flex; 
   align-items: flex-start; 
   gap: 15px;
+  justify-content: flex-start;
 }
 
-.comment-content { flex-grow: 1; }
+.comment-content { 
+  flex-grow: 1; 
+  text-align: left;
+}
+
 .comment-text { 
   margin: 0 0 5px 0; 
   font-size: 0.95rem; 
   white-space: pre-wrap; 
+  text-align: left;
 }
-.comment-date { color: #888; display: block; }
+
+.comment-date { 
+  color: #888; 
+  display: block; 
+  text-align: left;
+}
 
 /* 編集・削除ボタンの右寄せコンテナ */
 .comment-actions {

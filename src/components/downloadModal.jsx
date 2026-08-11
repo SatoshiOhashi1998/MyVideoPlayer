@@ -66,7 +66,7 @@ export default function DownloadModal({ videoId, isOpen, onClose }) {
     setMessage('');
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}/downloadVideo`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_VIDEO_BASE_URL}/api/youtube/download`, {
         video_id: videoId,
         save_dir: selectedDir,
         save_quality: quality,
