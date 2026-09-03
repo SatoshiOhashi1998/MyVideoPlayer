@@ -73,7 +73,7 @@ export default function AudioPlayer() {
             ref={audioRef}
             controls
             onEnded={handleEnded}
-            src={`${import.meta.env.VITE_AUDIO_SERVER_URL || import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}
+            src={`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/musics/${currentVideo.id}/stream`}
           />
         </div>
 

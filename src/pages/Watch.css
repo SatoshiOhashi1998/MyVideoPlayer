@@ -10,8 +10,8 @@
 /* 入力欄のサイズ */
 .comment-input-area textarea { 
   width: 100%; 
-  min-height: 80px; 
-  max-height: 80px; 
+  min-height: 160px; 
+  max-height: 160px; 
   resize: none; 
   padding: 10px; 
   border-radius: 8px; 

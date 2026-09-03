@@ -76,7 +76,7 @@ export default function VideoPlayer() {
           ref={videoRef}
           controls
           onEnded={handleEnded}
-          src={`${import.meta.env.VITE_VIDEO_SERVER_URL}${currentVideo.dirpath}/${currentVideo.filename}`}
+          src={`${import.meta.env.VITE_API_VIDEO_BASE_URL}api/videos/${currentVideo.id}/stream`}
         />
 
         <div className="video-controls">
