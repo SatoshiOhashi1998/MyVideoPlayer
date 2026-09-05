@@ -1,90 +1,241 @@
-.watch-container { padding: 20px; max-width: 800px; margin: 0 auto; }
-
-.comment-input-area { 
-  margin-bottom: 20px; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 10px; 
+.watch-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
+
+/* =========================
+   コメント入力欄
+   ========================= */
+
+.comment-input-area {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 
 /* 入力欄のサイズ */
-.comment-input-area textarea { 
-  width: 100%; 
-  min-height: 160px; 
-  max-height: 160px; 
-  resize: none; 
-  padding: 10px; 
-  border-radius: 8px; 
+
+.comment-input-area textarea {
+  width: 100%;
+  min-height: 160px;
+  max-height: 160px;
+  resize: none;
+
+  padding: 10px;
+
+  border-radius: 8px;
   border: 1px solid #ccc;
+
   box-sizing: border-box;
+
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-/* 送信ボタンのスタイル（右寄せを維持） */
-.comment-input-area button { 
-  align-self: flex-end; 
-  padding: 8px 20px; 
-  background-color: #065fd4; 
-  color: white; 
-  border: none; 
-  border-radius: 18px; 
-  font-weight: 600; 
-  cursor: pointer; 
+
+/* 入力欄フォーカス */
+
+.comment-input-area textarea:focus {
+  outline: none;
+  border-color: #065fd4;
+  box-shadow: 0 0 0 1px #065fd4;
+}
+
+
+/* 投稿・更新ボタン */
+
+.comment-input-area button {
+  align-self: flex-end;
+
+  padding: 8px 20px;
+
+  background-color: #065fd4;
+  color: white;
+
+  border: none;
+  border-radius: 18px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
   transition: background 0.2s;
 }
 
-.comment-input-area button:hover { background-color: #0556bf; }
+.comment-input-area button:hover {
+  background-color: #0556bf;
+}
 
-/* コメントリスト（テキストと配置を左揃えに指定） */
-.comments-list { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 15px; 
+
+/* =========================
+   その他のコメントボタン
+   ========================= */
+
+.comment-toggle-area {
+  margin-bottom: 15px;
+}
+
+
+/* その他のコメント表示ボタン */
+
+.comment-toggle-area button {
+  padding: 7px 14px;
+
+  background-color: #f2f2f2;
+  color: #555;
+
+  border: 1px solid #ddd;
+  border-radius: 18px;
+
+  font-size: 0.85rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.comment-toggle-area button:hover {
+  background-color: #e5e5e5;
+  border-color: #ccc;
+}
+
+
+/* =========================
+   コメント一覧
+   ========================= */
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
   text-align: left;
 }
 
-/* コメントアイテムのレイアウト */
-.comment-item { 
-  padding: 10px; 
-  border-bottom: 1px solid #eee; 
-  display: flex; 
-  align-items: flex-start; 
+
+/* コメント件数 */
+
+.comments-section h3 {
+  margin: 0 0 10px 0;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+/* コメントアイテム */
+
+.comment-item {
+  padding: 10px;
+
+  border-bottom: 1px solid #eee;
+
+  display: flex;
+  align-items: flex-start;
+
   gap: 15px;
+
   justify-content: flex-start;
 }
 
-.comment-content { 
-  flex-grow: 1; 
+
+/* コメント本文 */
+
+.comment-content {
+  flex-grow: 1;
   text-align: left;
 }
 
-.comment-text { 
-  margin: 0 0 5px 0; 
-  font-size: 0.95rem; 
-  white-space: pre-wrap; 
+.comment-text {
+  margin: 0 0 7px 0;
+
+  font-size: 0.95rem;
+
+  line-height: 1.5;
+
+  white-space: pre-wrap;
+
   text-align: left;
 }
 
-.comment-date { 
-  color: #888; 
-  display: block; 
+
+/* =========================
+   コメント情報
+   ========================= */
+
+.comment-meta {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 5px;
+}
+
+
+/* media_type */
+
+.comment-type {
+  display: inline-block;
+
+  padding: 2px 7px;
+
+  background-color: #eee;
+  color: #666;
+
+  border-radius: 4px;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+
+/* 投稿日時 */
+
+.comment-date {
+  color: #888;
+
+  font-size: 0.75rem;
+
   text-align: left;
 }
 
-/* 編集・削除ボタンの右寄せコンテナ */
+
+/* =========================
+   編集・削除ボタン
+   ========================= */
+
 .comment-actions {
   display: flex;
+
   gap: 8px;
+
   flex-shrink: 0;
 }
 
 .comment-actions button {
   padding: 6px 12px;
+
   background-color: #f2f2f2;
   color: #333;
+
   border: none;
   border-radius: 18px;
+
   font-size: 0.8rem;
+
   cursor: pointer;
+
+  transition: background-color 0.2s;
 }
 
-.comment-actions button:hover { background-color: #e0e0e0; }
+.comment-actions button:hover {
+  background-color: #e0e0e0;
+}
