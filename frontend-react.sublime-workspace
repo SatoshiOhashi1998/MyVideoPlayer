@@ -1,0 +1,2581 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"create",
+				"create_dailynote"
+			],
+			[
+				"target",
+				"target_index"
+			],
+			[
+				"getyaml",
+				"get_yaml_property_value"
+			],
+			[
+				"ad",
+				"add_tag_to_markdown"
+			],
+			[
+				"export",
+				"export_today_comments_to_md"
+			],
+			[
+				"remove",
+				"remove_nonexistent_audio_files_from_db"
+			],
+			[
+				"rename",
+				"rename_audios_and_save_metadata"
+			],
+			[
+				"delete",
+				"delete_by_id"
+			],
+			[
+				"VITE",
+				"VITE_ALL_VIDEO_DATA"
+			],
+			[
+				"video",
+				"video_id"
+			],
+			[
+				"getvideo",
+				"get_video_list_as_string"
+			],
+			[
+				"gas",
+				"GAS_URL"
+			],
+			[
+				"send",
+				"send_data"
+			],
+			[
+				"pub",
+				"published_before"
+			],
+			[
+				"natsor",
+				"natsorted"
+			],
+			[
+				"restore",
+				"restore_video_filenames_from_db"
+			],
+			[
+				"getall",
+				"get_all_video_datas"
+			],
+			[
+				"renae",
+				"rename_videos_and_save_metadata"
+			],
+			[
+				"gather",
+				"gather_all_templates(project_dir)"
+			],
+			[
+				"fetch",
+				"fetch_youtube_data"
+			],
+			[
+				"youtube",
+				"youtube.db"
+			],
+			[
+				"test",
+				"test_fetch.py"
+			],
+			[
+				"find",
+				"find_channels_by_name(partial_name, csv_path)"
+			],
+			[
+				"YOUTUBE",
+				"YouTubeDB"
+			],
+			[
+				"intera",
+				"interactive_mode()"
+			],
+			[
+				"FILTER",
+				"FILTERED_DATA_CSV"
+			],
+			[
+				"CATE",
+				"CATEGORIZE_CSV=csv"
+			],
+			[
+				"clean",
+				"clean_and_sort_main_data()"
+			],
+			[
+				"MAIN",
+				"MAIN_DATA_CSV=main-data.csv"
+			],
+			[
+				"show",
+				"show_head_of_csv(file_path, n)"
+			],
+			[
+				"main",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"fi",
+				"FILTERED_DB_FILE"
+			],
+			[
+				"comm",
+				"comment="
+			],
+			[
+				"VA",
+				"VAULT_PATH"
+			],
+			[
+				"chanen",
+				"channel_name"
+			],
+			[
+				"FILR",
+				"FILTERED_DB_FILE"
+			],
+			[
+				"channel",
+				"channel_data"
+			],
+			[
+				"channeva",
+				"channel_val="
+			],
+			[
+				"chann",
+				"channel_data"
+			],
+			[
+				"cha",
+				"channel="
+			],
+			[
+				"clea",
+				"clean_data_files()"
+			],
+			[
+				"parti",
+				"partial_name="
+			],
+			[
+				"ale",
+				"alert_path"
+			],
+			[
+				"suc",
+				"success_path"
+			],
+			[
+				"decide",
+				"decide_path"
+			],
+			[
+				"open",
+				"open_hand_ev_path"
+			],
+			[
+				"filepa",
+				"file_path"
+			],
+			[
+				"isal",
+				"is_already_renamed(filename)"
+			],
+			[
+				"base",
+				"BASE_DIR"
+			],
+			[
+				"DB",
+				"DB_URL"
+			],
+			[
+				"videodatas",
+				"video_datas"
+			],
+			[
+				"Video",
+				"VideoDatabase"
+			],
+			[
+				"run",
+				"run_use_chat_data"
+			],
+			[
+				"run_",
+				"run_use_chat_data"
+			],
+			[
+				"PUBLI",
+				"PUBLISHED_BEFORE_DATE"
+			],
+			[
+				"rungetyou",
+				"run_get_youtube_chat()"
+			],
+			[
+				"gete",
+				"getenv"
+			],
+			[
+				"getYl",
+				"getYlArchive.bat"
+			],
+			[
+				"get",
+				"get_oldest_and_latest_comment"
+			],
+			[
+				"file",
+				"file_path="
+			],
+			[
+				"save",
+				"SAVE_CHANNEL"
+			],
+			[
+				"chae",
+				"channel="
+			],
+			[
+				"JSON",
+				"JSON_DIRECTORY"
+			],
+			[
+				"down",
+				"download_live_chat(video_url)"
+			],
+			[
+				"getvideos",
+				"get_videos_from_channel"
+			],
+			[
+				"PUB",
+				"PUBLISHED_BEFORE_DATE"
+			],
+			[
+				"filtered",
+				"FILTERED_DATA"
+			],
+			[
+				"commen",
+				"comments.csv"
+			],
+			[
+				"countrows",
+				"count_rows()"
+			],
+			[
+				"CSV",
+				"CSV_FILE"
+			],
+			[
+				"fetchco",
+				"fetch_comments_with_keyword_and_save(keyword, csv_filename)"
+			],
+			[
+				"filt",
+				"filtered_df"
+			],
+			[
+				"filter",
+				"filtered_df"
+			],
+			[
+				"geturuha",
+				"getUruhaChat()"
+			],
+			[
+				"checkun",
+				"check_unwanted_characters(text)"
+			],
+			[
+				"checkunwanter",
+				"check_unwanted_characters(text)"
+			],
+			[
+				"json",
+				"json_file"
+			],
+			[
+				"j",
+				"json_file"
+			],
+			[
+				"usea",
+				"useApi()"
+			],
+			[
+				"nextpa",
+				"next_page_token"
+			],
+			[
+				"YOUTUBELI",
+				"YOUTUBE_LIVE_LIST"
+			],
+			[
+				"update",
+				"update_excel_multiple"
+			],
+			[
+				"que",
+				"query_param"
+			],
+			[
+				"getarchi",
+				"get_archived_live_streams_by_query"
+			],
+			[
+				"idparm",
+				"id_param"
+			],
+			[
+				"getby",
+				"get_archived_live_stream_by_videoid"
+			],
+			[
+				"qua",
+				"quality"
+			],
+			[
+				"savedi",
+				"save_dir"
+			],
+			[
+				"select",
+				"selectedQuality"
+			],
+			[
+				"qu",
+				"qualities"
+			],
+			[
+				"extract",
+				"extract_and_move_cursor_folders"
+			],
+			[
+				"classi",
+				"classify_and_move_file"
+			],
+			[
+				"batfile",
+				"batfile_name"
+			],
+			[
+				"batfi",
+				"batfile_path"
+			],
+			[
+				"bat",
+				"batfile_name"
+			],
+			[
+				"btfile",
+				"batfile_path"
+			],
+			[
+				"download",
+				"download_video"
+			],
+			[
+				"sendda",
+				"send_data"
+			],
+			[
+				"addo",
+				"add_video_data"
+			],
+			[
+				"getvideodt",
+				"get_video_datas"
+			],
+			[
+				"getvideodta",
+				"get_video_datas"
+			],
+			[
+				"clust",
+				"clusters"
+			],
+			[
+				"da",
+				"datetime"
+			],
+			[
+				"get_archi",
+				"get_archived_live_streams_by_query"
+			],
+			[
+				"upco",
+				"upcoming_streams_json"
+			],
+			[
+				"use",
+				"use_dir"
+			],
+			[
+				"dir",
+				"dirpath"
+			],
+			[
+				"set",
+				"setVideoTime"
+			],
+			[
+				"v",
+				"v_param"
+			],
+			[
+				"getplay",
+				"get_playlist_title"
+			],
+			[
+				"weath",
+				"weatherApiKey"
+			],
+			[
+				"wea",
+				"weatherMapApi"
+			],
+			[
+				"selected",
+				"selectedValues"
+			],
+			[
+				"make",
+				"makeThumbnail"
+			],
+			[
+				"acco",
+				"accountName"
+			],
+			[
+				"ma",
+				"makeThumbnail"
+			],
+			[
+				"turn",
+				"turn_off_monitor"
+			],
+			[
+				"getN",
+				"getNijiGtaData"
+			],
+			[
+				"email",
+				"email_ids\tabc"
+			],
+			[
+				"ema",
+				"email_ids\tabc"
+			],
+			[
+				"print",
+				"print_jobs\tabc"
+			],
+			[
+				"minute",
+				"minute=0\tabc"
+			],
+			[
+				"button",
+				"button-container\tabc"
+			],
+			[
+				"schedule",
+				"schedule_time\tabc"
+			],
+			[
+				"esca",
+				"escapedVideoPath\tabc"
+			],
+			[
+				"rena",
+				"rename_files\tabc"
+			],
+			[
+				"now",
+				"nowUseDir\tabc"
+			],
+			[
+				"padding",
+				"padding-left\tproperty"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/main.jsx",
+			"settings":
+			{
+				"buffer_size": 241,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/downloadModal.jsx",
+			"settings":
+			{
+				"buffer_size": 5579,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/pages/Home.jsx",
+			"settings":
+			{
+				"buffer_size": 5270,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/pages/Watch.jsx",
+			"settings":
+			{
+				"buffer_size": 6724,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					36,
+					1,
+					"paste",
+					null,
+					"AQAAAAAAAAAAAAAAQxoAAAAAAACpEgAALy8gc3JjL3BhZ2VzL1dhdGNoLmpzeAppbXBvcnQgeyB1c2VFZmZlY3QsIHVzZVN0YXRlLCB1c2VDYWxsYmFjayB9IGZyb20gJ3JlYWN0JzsKaW1wb3J0IHsgdXNlU2VhcmNoUGFyYW1zIH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7CmltcG9ydCBheGlvcyBmcm9tICdheGlvcyc7CmltcG9ydCB7IHVzZVZpZGVvU3RvcmUgfSBmcm9tICcuLi9zdG9yZS91c2VWaWRlb1N0b3JlJzsKaW1wb3J0IENvbW1lbnRGb3JtIGZyb20gJy4uL2NvbXBvbmVudHMvQ29tbWVudEZvcm0nOwppbXBvcnQgQ29tbWVudExpc3QgZnJvbSAnLi4vY29tcG9uZW50cy9Db21tZW50TGlzdCc7CmltcG9ydCAnLi9XYXRjaC5jc3MnOwoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gV2F0Y2goKSB7CiAgY29uc3QgW3NlYXJjaFBhcmFtc10gPSB1c2VTZWFyY2hQYXJhbXMoKTsKICBjb25zdCB2aWRlb0lkID0gc2VhcmNoUGFyYW1zLmdldCgndicpOwogIGNvbnN0IG1lZGlhVHlwZSA9IHNlYXJjaFBhcmFtcy5nZXQoJ3R5cGUnKSB8fCAndmlkZW8nOwogIGNvbnN0IHN0YXJ0VGltZSA9IHNlYXJjaFBhcmFtcy5nZXQoJ3QnKTsKICAKICBjb25zdCBjdXJyZW50VmlkZW8gPSB1c2VWaWRlb1N0b3JlKChzdGF0ZSkgPT4gc3RhdGUuY3VycmVudFZpZGVvKTsKICBjb25zdCBzZXRDdXJyZW50VmlkZW8gPSB1c2VWaWRlb1N0b3JlKChzdGF0ZSkgPT4gc3RhdGUuc2V0Q3VycmVudFZpZGVvKTsKICAKICBjb25zdCBbY29tbWVudHMsIHNldENvbW1lbnRzXSA9IHVzZVN0YXRlKFtdKTsKICBjb25zdCBbbmV3Q29tbWVudCwgc2V0TmV3Q29tbWVudF0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW2VkaXRpbmdJZCwgc2V0RWRpdGluZ0lkXSA9IHVzZVN0YXRlKG51bGwpOwoKICBjb25zdCB0YXJnZXRJZCA9IGN1cnJlbnRWaWRlbyA/IGN1cnJlbnRWaWRlby5pZCA6IHZpZGVvSWQ7CgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBkb2N1bWVudC50aXRsZSA9IGN1cnJlbnRWaWRlbyA/IGAke2N1cnJlbnRWaWRlby5maWxldGl0bGV9IC0gTXkgVmlkZW8gQXBwYCA6ICdNeSBWaWRlbyBBcHAnOwogIH0sIFtjdXJyZW50VmlkZW9dKTsKCiAgLy8g57Wx5ZCI44GV44KM44GfQVBJ44GL44KJ44Kz44Oh44Oz44OI44KS5Y+W5b6X77yIbWVkaWFUeXBl44KS44Kv44Ko44Oq44OR44Op44Oh44O844K/44Gn5rih44GZ77yJCiAgY29uc3QgZmV0Y2hDb21tZW50cyA9IHVzZUNhbGxiYWNrKGFzeW5jICgpID0+IHsKICAgIGlmICghdGFyZ2V0SWQpIHJldHVybjsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGF4aW9zLmdldChgJHtpbXBvcnQubWV0YS5lbnYuVklURV9BUElfVklERU9fQkFTRV9VUkx9YXBpL2NvbW1lbnRzLyR7dGFyZ2V0SWR9YCwgewogICAgICAgIHBhcmFtczogeyB0eXBlOiBtZWRpYVR5cGUgfQogICAgICB9KTsKICAgICAgc2V0Q29tbWVudHMocmVzLmRhdGEpOwogICAgfSBjYXRjaCAoZXJyKSB7CiAgICAgIGNvbnNvbGUuZXJyb3IoIuOCs+ODoeODs+ODiOWPluW+l+WkseaVlzoiLCBlcnIpOwogICAgfQogIH0sIFt0YXJnZXRJZCwgbWVkaWFUeXBlXSk7CgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoIXZpZGVvSWQpIHJldHVybjsKCiAgICBpZiAoIWN1cnJlbnRWaWRlbyB8fCBTdHJpbmcoY3VycmVudFZpZGVvLmlkKSAhPT0gU3RyaW5nKHZpZGVvSWQpIHx8IGN1cnJlbnRWaWRlby50eXBlICE9PSBtZWRpYVR5cGUpIHsKICAgICAgbGV0IGVuZHBvaW50ID0gJyc7CiAgICAgIAogICAgICBpZiAobWVkaWFUeXBlID09PSAnYXVkaW8nKSB7CiAgICAgICAgZW5kcG9pbnQgPSBgJHtpbXBvcnQubWV0YS5lbnYuVklURV9BUElfQVVESU9fQkFTRV9VUkx9JHtpbXBvcnQubWV0YS5lbnYuVklURV9BTExfQVVESU9fREFUQX0vJHt2aWRlb0lkfS9pbmZvYDsKICAgICAgfSBlbHNlIGlmIChtZWRpYVR5cGUgPT09ICd5b3V0dWJlJykgewogICAgICAgIGVuZHBvaW50ID0gYCR7aW1wb3J0Lm1ldGEuZW52LlZJVEVfQVBJX1lPVVRVQkVfQkFTRV9VUkwgfHwgaW1wb3J0Lm1ldGEuZW52LlZJVEVfQVBJX1ZJREVPX0JBU0VfVVJMfWFwaS95b3V0dWJlLyR7dmlkZW9JZH0vaW5mb2A7CiAgICAgIH0gZWxzZSB7CiAgICAgICAgZW5kcG9pbnQgPSBgJHtpbXBvcnQubWV0YS5lbnYuVklURV9BUElfVklERU9fQkFTRV9VUkx9JHtpbXBvcnQubWV0YS5lbnYuVklURV9BTExfVklERU9fREFUQX0vJHt2aWRlb0lkfS9pbmZvYDsKICAgICAgfQoKICAgICAgYXhpb3MuZ2V0KGVuZHBvaW50KQogICAgICAgIC50aGVuKHJlcyA9PiB7CiAgICAgICAgICBzZXRDdXJyZW50VmlkZW8oeyAuLi5yZXMuZGF0YSwgdHlwZTogbWVkaWFUeXBlIH0pOwogICAgICAgIH0pCiAgICAgICAgLmNhdGNoKGVyciA9PiBjb25zb2xlLmVycm9yKGAke21lZGlhVHlwZX0g44Oh44OH44Kj44Ki5oOF5aCx44Gu5Y+W5b6X44Gr5aSx5pWXOmAsIGVycikpOwogICAgfQogIH0sIFt2aWRlb0lkLCBtZWRpYVR5cGUsIGN1cnJlbnRWaWRlbywgc2V0Q3VycmVudFZpZGVvXSk7CgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBmZXRjaENvbW1lbnRzKCk7CiAgfSwgW2ZldGNoQ29tbWVudHNdKTsKCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGlmIChzdGFydFRpbWUpIHsKICAgICAgY29uc3QgdGltZXIgPSBzZXRUaW1lb3V0KCgpID0+IHsKICAgICAgICB3aW5kb3cuZGlzcGF0Y2hFdmVudChuZXcgQ3VzdG9tRXZlbnQoJ3NlZWtUbycsIHsgZGV0YWlsOiBOdW1iZXIoc3RhcnRUaW1lKSB9KSk7CiAgICAgIH0sIDUwMCk7CiAgICAgIHJldHVybiAoKSA9PiBjbGVhclRpbWVvdXQodGltZXIpOwogICAgfQogIH0sIFt2aWRlb0lkLCBzdGFydFRpbWVdKTsKCiAgY29uc3QgaGFuZGxlU2F2ZSA9IGFzeW5jICgpID0+IHsKICAgIGlmICghbmV3Q29tbWVudC50cmltKCkgfHwgIXRhcmdldElkKSByZXR1cm47CgogICAgdHJ5IHsKICAgICAgaWYgKGVkaXRpbmdJZCkgewogICAgICAgIC8vIOe3qOmbhuaZguOBryAvYXBpL2NvbW1lbnRzLzxpZD4g44KS5Y+p44GPCiAgICAgICAgYXdhaXQgYXhpb3MucHV0KGAke2ltcG9ydC5tZXRhLmVudi5WSVRFX0FQSV9WSURFT19CQVNFX1VSTH1hcGkvY29tbWVudHMvJHtlZGl0aW5nSWR9YCwgeyBjb250ZW50OiBuZXdDb21tZW50IH0pOwogICAgICAgIHNldEVkaXRpbmdJZChudWxsKTsKICAgICAgfSBlbHNlIHsKICAgICAgICAvLyDmlrDopo/mipXnqL/mmYLjga8gL2FwaS9pdGVtcy88aWQ+L2NvbW1lbnRzIOOBqyBtZWRpYVR5cGUg44KC5ZCr44KB44GmUE9TVAogICAgICAgIGF3YWl0IGF4aW9zLnBvc3QoYCR7aW1wb3J0Lm1ldGEuZW52LlZJVEVfQVBJX1ZJREVPX0JBU0VfVVJMfWFwaS9jb21tZW50cy8ke3RhcmdldElkfWAsIHsgCiAgICAgICAgICBjb250ZW50OiBuZXdDb21tZW50LAogICAgICAgICAgbWVkaWFfdHlwZTogbWVkaWFUeXBlIAogICAgICAgIH0pOwogICAgICB9CiAgICAgIHNldE5ld0NvbW1lbnQoJycpOwogICAgICBmZXRjaENvbW1lbnRzKCk7CiAgICB9IGNhdGNoIChlcnIpIHsKICAgICAgY29uc29sZS5lcnJvcihlZGl0aW5nSWQgPyAi5pu05paw5aSx5pWXOiIgOiAi5oqV56i/5aSx5pWXOiIsIGVycik7CiAgICB9CiAgfTsKCiAgY29uc3Qgc3RhcnRFZGl0ID0gKGMpID0+IHsKICAgIHNldEVkaXRpbmdJZChjLmlkKTsKICAgIHNldE5ld0NvbW1lbnQoYy5jb250ZW50KTsKICB9OwoKICBjb25zdCBjYW5jZWxFZGl0ID0gKCkgPT4gewogICAgc2V0RWRpdGluZ0lkKG51bGwpOwogICAgc2V0TmV3Q29tbWVudCgnJyk7CiAgfTsKCiAgY29uc3QgaGFuZGxlRGVsZXRlID0gYXN5bmMgKGNvbW1lbnRJZCkgPT4gewogICAgaWYgKCF3aW5kb3cuY29uZmlybSgi5pys5b2T44Gr5YmK6Zmk44GX44G+44GZ44GL77yfIikpIHJldHVybjsKICAgIHRyeSB7CiAgICAgIC8vIOWJiumZpOaZguOBryAvYXBpL2NvbW1lbnRzLzxpZD4g44KS5Y+p44GPCiAgICAgIGF3YWl0IGF4aW9zLmRlbGV0ZShgJHtpbXBvcnQubWV0YS5lbnYuVklURV9BUElfVklERU9fQkFTRV9VUkx9YXBpL2NvbW1lbnRzLyR7Y29tbWVudElkfWApOwogICAgICBmZXRjaENvbW1lbnRzKCk7CiAgICB9IGNhdGNoIChlcnIpIHsKICAgICAgY29uc29sZS5lcnJvcigi5YmK6Zmk5aSx5pWXOiIsIGVycik7CiAgICB9CiAgfTsKCiAgY29uc3QgaGFuZGxlQ29udGVudENsaWNrID0gKGUpID0+IHsKICAgIGlmIChlLnRhcmdldC5jbGFzc0xpc3QuY29udGFpbnMoJ3RpbWVzdGFtcCcpKSB7CiAgICAgIGNvbnN0IHNlY29uZHMgPSBlLnRhcmdldC5nZXRBdHRyaWJ1dGUoJ2RhdGEtc2Vjb25kcycpOwogICAgICB3aW5kb3cuZGlzcGF0Y2hFdmVudChuZXcgQ3VzdG9tRXZlbnQoJ3NlZWtUbycsIHsgZGV0YWlsOiBOdW1iZXIoc2Vjb25kcykgfSkpOwogICAgfQogIH07CgogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0id2F0Y2gtY29udGFpbmVyIj4KICAgICAgPENvbW1lbnRGb3JtIAogICAgICAgIG5ld0NvbW1lbnQ9e25ld0NvbW1lbnR9CiAgICAgICAgc2V0TmV3Q29tbWVudD17c2V0TmV3Q29tbWVudH0KICAgICAgICBlZGl0aW5nSWQ9e2VkaXRpbmdJZH0KICAgICAgICBvblNhdmU9e2hhbmRsZVNhdmV9CiAgICAgICAgb25DYW5jZWw9e2NhbmNlbEVkaXR9CiAgICAgIC8+CiAgICAgIDxDb21tZW50TGlzdCAKICAgICAgICBjb21tZW50cz17Y29tbWVudHN9CiAgICAgICAgb25FZGl0PXtzdGFydEVkaXR9CiAgICAgICAgb25EZWxldGU9e2hhbmRsZURlbGV0ZX0KICAgICAgICBvbkNvbnRlbnRDbGljaz17aGFuZGxlQ29udGVudENsaWNrfQogICAgICAvPgogICAgPC9kaXY+CiAgKTsKfQ",
+					"AQAAAAAAAAABAAAAAAAAAAAAAADrEQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					40,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAEMaAAAAAAAARBoAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAQxoAAAAAAABDGgAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "src/pages/Watch.css",
+			"settings":
+			{
+				"buffer_size": 3011,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					22,
+					1,
+					"paste",
+					null,
+					"AQAAAAAAAAAAAAAAwgsAAAAAAADpBgAALndhdGNoLWNvbnRhaW5lciB7IHBhZGRpbmc6IDIwcHg7IG1heC13aWR0aDogODAwcHg7IG1hcmdpbjogMCBhdXRvOyB9CgouY29tbWVudC1pbnB1dC1hcmVhIHsgCiAgbWFyZ2luLWJvdHRvbTogMjBweDsgCiAgZGlzcGxheTogZmxleDsgCiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgCiAgZ2FwOiAxMHB4OyAKfQoKLyog5YWl5Yqb5qyE44Gu44K144Kk44K6ICovCi5jb21tZW50LWlucHV0LWFyZWEgdGV4dGFyZWEgeyAKICB3aWR0aDogMTAwJTsgCiAgbWluLWhlaWdodDogMTYwcHg7IAogIG1heC1oZWlnaHQ6IDE2MHB4OyAKICByZXNpemU6IG5vbmU7IAogIHBhZGRpbmc6IDEwcHg7IAogIGJvcmRlci1yYWRpdXM6IDhweDsgCiAgYm9yZGVyOiAxcHggc29saWQgI2NjYzsKICBib3gtc2l6aW5nOiBib3JkZXItYm94Owp9CgovKiDpgIHkv6Hjg5zjgr/jg7Pjga7jgrnjgr/jgqTjg6vvvIjlj7Plr4TjgZvjgpLntq3mjIHvvIkgKi8KLmNvbW1lbnQtaW5wdXQtYXJlYSBidXR0b24geyAKICBhbGlnbi1zZWxmOiBmbGV4LWVuZDsgCiAgcGFkZGluZzogOHB4IDIwcHg7IAogIGJhY2tncm91bmQtY29sb3I6ICMwNjVmZDQ7IAogIGNvbG9yOiB3aGl0ZTsgCiAgYm9yZGVyOiBub25lOyAKICBib3JkZXItcmFkaXVzOiAxOHB4OyAKICBmb250LXdlaWdodDogNjAwOyAKICBjdXJzb3I6IHBvaW50ZXI7IAogIHRyYW5zaXRpb246IGJhY2tncm91bmQgMC4yczsKfQoKLmNvbW1lbnQtaW5wdXQtYXJlYSBidXR0b246aG92ZXIgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjMDU1NmJmOyB9CgovKiDjgrPjg6Hjg7Pjg4jjg6rjgrnjg4jvvIjjg4bjgq3jgrnjg4jjgajphY3nva7jgpLlt6bmj4PjgYjjgavmjIflrprvvIkgKi8KLmNvbW1lbnRzLWxpc3QgeyAKICBkaXNwbGF5OiBmbGV4OyAKICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOyAKICBnYXA6IDE1cHg7IAogIHRleHQtYWxpZ246IGxlZnQ7Cn0KCi8qIOOCs+ODoeODs+ODiOOCouOCpOODhuODoOOBruODrOOCpOOCouOCpuODiCAqLwouY29tbWVudC1pdGVtIHsgCiAgcGFkZGluZzogMTBweDsgCiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNlZWU7IAogIGRpc3BsYXk6IGZsZXg7IAogIGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0OyAKICBnYXA6IDE1cHg7CiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0Owp9CgouY29tbWVudC1jb250ZW50IHsgCiAgZmxleC1ncm93OiAxOyAKICB0ZXh0LWFsaWduOiBsZWZ0Owp9CgouY29tbWVudC10ZXh0IHsgCiAgbWFyZ2luOiAwIDAgNXB4IDA7IAogIGZvbnQtc2l6ZTogMC45NXJlbTsgCiAgd2hpdGUtc3BhY2U6IHByZS13cmFwOyAKICB0ZXh0LWFsaWduOiBsZWZ0Owp9CgouY29tbWVudC1kYXRlIHsgCiAgY29sb3I6ICM4ODg7IAogIGRpc3BsYXk6IGJsb2NrOyAKICB0ZXh0LWFsaWduOiBsZWZ0Owp9CgovKiDnt6jpm4bjg7vliYrpmaTjg5zjgr/jg7Pjga7lj7Plr4TjgZvjgrPjg7Pjg4bjg4ogKi8KLmNvbW1lbnQtYWN0aW9ucyB7CiAgZGlzcGxheTogZmxleDsKICBnYXA6IDhweDsKICBmbGV4LXNocmluazogMDsKfQoKLmNvbW1lbnQtYWN0aW9ucyBidXR0b24gewogIHBhZGRpbmc6IDZweCAxMnB4OwogIGJhY2tncm91bmQtY29sb3I6ICNmMmYyZjI7CiAgY29sb3I6ICMzMzM7CiAgYm9yZGVyOiBub25lOwogIGJvcmRlci1yYWRpdXM6IDE4cHg7CiAgZm9udC1zaXplOiAwLjhyZW07CiAgY3Vyc29yOiBwb2ludGVyOwp9CgouY29tbWVudC1hY3Rpb25zIGJ1dHRvbjpob3ZlciB7IGJhY2tncm91bmQtY29sb3I6ICNlMGUwZTA7IH0",
+					"AQAAAAAAAAABAAAAAAAAAAAAAABNBgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					25,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAMILAAAAAAAAwwsAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAwgsAAAAAAADCCwAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "src/components/CommentList.jsx",
+			"settings":
+			{
+				"buffer_size": 1315,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					18,
+					1,
+					"paste",
+					null,
+					"AQAAAAAAAAAAAAAAIgUAAAAAAAB6AwAAaW1wb3J0IHsgcGFyc2VDb21tZW50Q29udGVudCB9IGZyb20gJy4uL3V0aWxzL2NvbW1lbnRQYXJzZXInOwoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gQ29tbWVudExpc3QoeyBjb21tZW50cywgb25FZGl0LCBvbkRlbGV0ZSwgb25Db250ZW50Q2xpY2sgfSkgewogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0iY29tbWVudHMtc2VjdGlvbiIgb25DbGljaz17b25Db250ZW50Q2xpY2t9PgogICAgICA8aDM+e2NvbW1lbnRzLmxlbmd0aH0g5Lu244Gu44Kz44Oh44Oz44OIPC9oMz4KICAgICAgPGRpdiBjbGFzc05hbWU9ImNvbW1lbnRzLWxpc3QiPgogICAgICAgIHtjb21tZW50cy5tYXAoYyA9PiAoCiAgICAgICAgICA8ZGl2IGtleT17Yy5pZH0gY2xhc3NOYW1lPSJjb21tZW50LWl0ZW0iPgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY29tbWVudC1jb250ZW50Ij4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY29tbWVudC10ZXh0IiBkYW5nZXJvdXNseVNldElubmVySFRNTD17cGFyc2VDb21tZW50Q29udGVudChjLmNvbnRlbnQpfSAvPgogICAgICAgICAgICAgIDxzbWFsbCBjbGFzc05hbWU9ImNvbW1lbnQtZGF0ZSI+e2MuY3JlYXRlZF9hdH08L3NtYWxsPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNvbW1lbnQtYWN0aW9ucyI+CiAgICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBvbkVkaXQoYyl9Pue3qOmbhjwvYnV0dG9uPgogICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4gb25EZWxldGUoYy5pZCl9PuWJiumZpDwvYnV0dG9uPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICkpfQogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0",
+					"AQAAAAAAAAABAAAAAAAAAAAAAABmAwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					21,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAACIFAAAAAAAAIwUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "src/components/CommentForm.jsx",
+			"settings":
+			{
+				"buffer_size": 546,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/components/UniversalPlayer.jsx",
+			"settings":
+			{
+				"buffer_size": 696,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/components/AudioPlayer.jsx",
+			"settings":
+			{
+				"buffer_size": 4378,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/components/VideoPlayer.jsx",
+			"settings":
+			{
+				"buffer_size": 4422,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"push ",
+				"git: push"
+			],
+			[
+				"commit ",
+				"git: commit"
+			],
+			[
+				"commit",
+				"git: commit"
+			],
+			[
+				"push",
+				"git: push"
+			],
+			[
+				"com",
+				"git: commit"
+			],
+			[
+				"add git",
+				"github: add fork as remote"
+			],
+			[
+				"git add",
+				"git: remote add"
+			],
+			[
+				"git commit ",
+				"git: commit"
+			],
+			[
+				"auto ",
+				"AutoPEP8: Format Code"
+			],
+			[
+				"auto",
+				"Preferences: AutoPep8 Settings – Default"
+			],
+			[
+				"git push",
+				"git: push"
+			],
+			[
+				" commit",
+				"git: commit"
+			],
+			[
+				"git stage ",
+				"git: quick stage"
+			],
+			[
+				"git stage file",
+				"git: quick stage current file and commit"
+			],
+			[
+				"git status",
+				"git: status"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"list pa",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"list ",
+				"Package Control: List Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"commit git",
+				"git: commit"
+			],
+			[
+				"git commit",
+				"Set Syntax: Git Commit"
+			],
+			[
+				"intsall",
+				"Package Control: Install Package"
+			],
+			[
+				"gitsavvy",
+				"GitSavvy: help"
+			],
+			[
+				"gitsa",
+				"GitSavvy: help"
+			],
+			[
+				"help",
+				"GitSavvy: help"
+			],
+			[
+				"git:status",
+				"git: status"
+			],
+			[
+				"gitsavv",
+				"GitSavvy: help"
+			],
+			[
+				"list pac",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"setting pac",
+				"Preferences: Package Control Settings"
+			],
+			[
+				"gitsavvy:",
+				"GitSavvy: help"
+			],
+			[
+				"Package Control: Enable Package",
+				"Package Control: Enable Package"
+			],
+			[
+				"enabe pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"Commit",
+				"git: commit"
+			],
+			[
+				"Package Control: debug",
+				"Package Control: Enable Debug Mode"
+			],
+			[
+				"Package Control: list",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: LSP",
+				"Package Control: List Packages"
+			],
+			[
+				"add reposi",
+				"Package Control: Add Repository"
+			],
+			[
+				"setting",
+				"Preferences: Settings"
+			],
+			[
+				"Package Control: All",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 366.0,
+		"history":
+		[
+			"print(subprocess.check_output([\"git\", \"--version\"]).decode())",
+			"import subprocess",
+			"import subproccess",
+			"git status"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/.gitignore",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/conftest.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/use_md_file.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/utils.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/views/api.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/models.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/.env",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/__init__.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/run.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/VideoPlayer.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/AudioPlayer.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/UniversalPlayer.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Watch.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Home.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/App.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/youtube_api.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/tests/test_use_md_file.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/tests/test_api.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/App.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/test/use_md_file.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/useMailServer.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/scheduler.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/getWeatherData.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Watch.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/export_comments.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/chrome-extension/downloadVideo/popup.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/downloadModal.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/markdown/yaml_editor.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/markdown/fetch_md_file.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/markdown/create_dailynote.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/.env",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Home.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/Header.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/SleepTimerControl.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/SleepTimerControl.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/VideoPlayer.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/AudioPlayer.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/YouTubePlayer.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/YouTubePlayer.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/downloadModal.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/UniversalPlayer.css",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/store/useVideoStore.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/hooks/usePlayer.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/store/useQueueStore.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/views/web.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/audio_manager.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/media_base.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/video_manager.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/rename_audio_files.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/rename_video_files.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/media_bases.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myutils/myutils/youtube_api/fetch_youtube_data.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/getYouTubeLive.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/routes.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/views/__init__.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/chrome-extension/downloadVideo/popup.html",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/TimeUnitPicker.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/send_gas.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myutils/myutils/youtube_api/youtube_db.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/CommentList.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/CommentForm.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/utils/commentParser.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/utils/timeUtils.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/main.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/bat/myApp.bat",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/contexts/VideoContext.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/CommentSection.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/store/useSearchStore.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/VideoList.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Pages.jsx",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/useVideoStore.js",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myutils/myutils/gas_api/use_gas.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/bat/getWeatherData.bat",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/templates/watchVideo.html",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/log.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/.gitignore",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/logs/info.log",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/bat/getYlArchive.bat",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/.env",
+		"/C/Users/user/AppData/Roaming/Sublime Text/Packages/AutoPep8/AutoPep8.sublime-settings",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/create_db.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/scheduler.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/useMailServer.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/bat/run_get_live_data.bat",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/db_manager.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/rename_video_files.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/run.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/app/__init__.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/app/services/scheduler.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/app/routes.py",
+		"/C/Users/user/AppData/Roaming/Sublime Text/Packages/User/Package Control.sublime-settings",
+		"/C/Users/user/AppData/Roaming/Sublime Text/Installed Packages/Package Control.sublime-package",
+		"/C/Users/user/AppData/Roaming/Sublime Text/Installed Packages/SublimeLinter.sublime-package",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/test.sublime-project",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/test.sublime-workspace",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/app/config.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp.sublite-project",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp.sublime-project",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/myapp.sublime-project",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/app/test.txt",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/main.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/bat/TestPy.bat",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myutils/myutils/get_django_project.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/getYouTubePlaylist.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/getYmHistory.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/getTenhouLog.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/testNotification.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/youtube_downloader.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/get_data.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/download_processor.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myapp/myapp/app/models.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/FlaskApp/app/modules/run_get_live_data.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vspo-comments/.gitignore",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/myutils/.gitignore",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/bat/getVtuberMusic.bat",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/video_player/settings.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/csv/playlists.csv",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/csv/categorize.csv",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/csv/main-data.csv",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/csv/filtered_data.csv",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/.env",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/.gitignore",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/video_player/urls.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/users/forms.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/users/views.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/users/models.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/users/urls.py",
+		"/C/Users/user/PycharmProjects/MyUtilProject/MyApp/vtuber-music/video_player/videos/models.py"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"DB Error Test",
+			"Find: DB Error Test"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/main.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/main.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/components/downloadModal.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5579,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1243,
+								1243
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1245,
+										1246
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1179,
+										1180
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/downloadModal.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 209.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/pages/Home.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								5270
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										4826,
+										4827
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Home.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2093.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/pages/Watch.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6140,
+								6140
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										6139,
+										6140
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										6125,
+										6126
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Watch.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/pages/Watch.css",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3011,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3011,
+								3011
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/pages/Watch.css",
+							"syntax": "Packages/Djaneiro/Syntaxes/CSS (Django).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2393.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/CommentList.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1315,
+								1315
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/CommentList.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 196.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/components/CommentForm.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 546,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								546
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										545,
+										546
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										96,
+										97
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/CommentForm.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/components/UniversalPlayer.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								695,
+								695
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										695,
+										696
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										296,
+										297
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/UniversalPlayer.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/components/AudioPlayer.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								4378
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										4377,
+										4378
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										368,
+										369
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/AudioPlayer.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/components/VideoPlayer.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								4422
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".\"'/@<",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-typescript"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										4421,
+										4422
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										368,
+										369
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"git_gutter_is_enabled": true,
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/user/PycharmProjects/MyUtilProject/MyApp/my-app/src/components/VideoPlayer.jsx",
+							"show_definitions": false,
+							"syntax": "Packages/JavaScript/JSX.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1899.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 209.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 377.0,
+		"history":
+		[
+		]
+	},
+	"output.LSP Log Panel":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.SublimeLinter":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.autopep8":
+	{
+		"height": 267.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "frontend-react.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"route",
+				"myapp\\app\\routes.py"
+			],
+			[
+				"run",
+				"myapp\\run.py"
+			],
+			[
+				"player",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vtuber-music\\video_player\\videos\\templates\\videos\\player.html"
+			],
+			[
+				"base",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vtuber-music\\video_player\\templates\\base.html"
+			],
+			[
+				"set",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vtuber-music\\vtuber_music\\vtuber_music\\settings.py"
+			],
+			[
+				"sett",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vtuber-music\\vtuber_music\\vtuber_music\\settings.py"
+			],
+			[
+				"main",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vspo-comments\\main.py"
+			],
+			[
+				"acc url",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vtuber-music\\vtuber_music\\accounts\\urls.py"
+			],
+			[
+				"urls",
+				"C:\\Users\\user\\PycharmProjects\\MyUtilProject\\MyApp\\vtuber-music\\vtuber_music\\accounts\\urls.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
