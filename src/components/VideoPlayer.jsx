@@ -5,6 +5,7 @@ import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
 import { usePlayer } from '../hooks/usePlayer';
 import SleepTimerControl from './SleepTimerControl';
+import './VideoPlayer.css';
 
 export default function VideoPlayer() {
   const navigate = useNavigate();

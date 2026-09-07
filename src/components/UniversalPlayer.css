@@ -1,4 +1,9 @@
-/* --- 共通のラッパー・レイアウト --- */
+/* src/components/UniversalPlayer.css */
+
+/* =========================
+   プレイヤー共通レイアウト
+   ========================= */
+
 .player-wrapper {
   max-width: 1400px;
   margin: 0 auto;
@@ -8,76 +13,39 @@
   background-color: #0f0f0f;
   color: #f1f1f1;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* メインのコンテンツエリア */
+
+/* メインプレイヤー */
+
 .video-player-container,
 .audio-player-container,
 .youtube-player-container-wrapper {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
 }
 
+
+/* プレイヤー見出し */
+
 .video-player-container h3,
 .audio-player-container h3,
 .youtube-player-container-wrapper h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
 }
 
-/* --- 各種メディア（動画・音声・YouTube）の共通スタイル --- */
-.video-player-container video,
-.audio-visual-box,
-.youtube-player-container {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #181818;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  border: 1px solid #272727;
-}
 
-/* 音声プレイヤー専用のビジュアルボックス演出（アルバムアート風） */
-.audio-visual-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 24px;
-  box-sizing: border-box;
-}
+/* =========================
+   共通コントロール
+   ========================= */
 
-.audio-icon-pulse {
-  font-size: 3rem;
-  animation: pulse 2s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.08); opacity: 1; }
-}
-
-.audio-visual-box audio {
-  width: 100%;
-  max-width: 500px;
-  accent-color: #3ea6ff;
-}
-
-/* YouTube iframe */
-.youtube-player-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* --- 操作ボタン群（共通） --- */
 .video-controls,
 .audio-controls {
   margin-top: 16px;
@@ -96,7 +64,7 @@
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .video-controls button:hover,
@@ -112,7 +80,11 @@
   font-weight: 600;
 }
 
-/* --- 区間リピート設定エリア --- */
+
+/* =========================
+   区間リピート
+   ========================= */
+
 .section-loop-inputs {
   margin-top: 12px;
   display: flex;
@@ -125,45 +97,55 @@
 }
 
 .section-loop-inputs label {
-  font-size: 0.85rem;
-  color: #aaa;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 0.85rem;
+  color: #aaa;
 }
 
 .section-loop-inputs input {
   width: 80px;
-  text-align: center;
   padding: 6px;
+  text-align: center;
   background: #121212;
   border: 1px solid #3f3f3f;
-  color: #fff;
   border-radius: 4px;
+  color: #fff;
 }
 
-/* --- 再生キューエリア（共通） --- */
+
+/* =========================
+   再生キュー
+   ========================= */
+
 .queue-container {
   width: 340px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
   background: #181818;
   border: 1px solid #272727;
   border-radius: 12px;
   padding: 16px;
+
   display: flex;
   flex-direction: column;
+
   max-height: calc(100vh - 48px);
   position: sticky;
   top: 24px;
-  box-sizing: border-box;
 }
 
 .queue-container h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
+
   border-bottom: 1px solid #272727;
-  padding-bottom: 8px;
 }
 
 .queue-container ul {
@@ -177,13 +159,17 @@
 .queue-container li {
   margin-bottom: 8px;
   padding: 10px;
+
   background: #212121;
   border: 1px solid transparent;
   border-radius: 8px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.2s;
+
+  transition: background-color 0.2s, border-color 0.2s;
+
   cursor: grab;
   user-select: none;
 }
@@ -198,15 +184,18 @@
 }
 
 .queue-container li span {
+  flex: 1;
+  margin-right: 8px;
+
   font-size: 0.85rem;
+  color: #f1f1f1;
+
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-right: 8px;
-  color: #f1f1f1;
+
   cursor: pointer;
-  flex: 1;
 }
 
 .queue-container li span:hover {
@@ -214,14 +203,18 @@
 }
 
 .queue-container li button {
+  padding: 6px 10px;
+
   background: transparent;
   border: none;
   border-radius: 4px;
-  padding: 6px 10px;
-  cursor: pointer;
-  font-size: 0.75rem;
+
   color: #aaa;
-  transition: background 0.2s, color 0.2s;
+  font-size: 0.75rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .queue-container li button:hover {
@@ -229,11 +222,18 @@
   color: #ff4e4e;
 }
 
+
+/* =========================
+   プレイヤーがない場合
+   ========================= */
+
 .empty-state {
+  min-height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
   background-color: #0f0f0f;
   color: #aaa;
   font-size: 1.1rem;
