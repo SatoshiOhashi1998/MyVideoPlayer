@@ -4,15 +4,17 @@ import Home from './pages/Home';
 import Watch from './pages/Watch';
 import UniversalPlayer from './components/UniversalPlayer';
 import Header from './components/Header';
-import './App.css'
+import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app-container">
         <Header />
+
         <UniversalPlayer />
-        <main style={{ padding: '20px' }}>
+
+        <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/watch" element={<Watch />} />
