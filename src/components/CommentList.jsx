@@ -1,8 +1,9 @@
+// src/components/CommentList.jsx
+
 import { parseCommentContent } from '../utils/commentParser';
 
 export default function CommentList({
   comments,
-  currentMediaType,
   onEdit,
   onDelete,
   onContentClick
@@ -15,38 +16,68 @@ export default function CommentList({
       <h3>{comments.length} 件のコメント</h3>
 
       <div className="comments-list">
-        {comments.map(c => (
+        {comments.map((comment) => (
           <div
-            key={c.id}
+            key={comment.id}
             className="comment-item"
           >
             <div className="comment-content">
 
-              <div
-                className="comment-text"
-                dangerouslySetInnerHTML={
-                  parseCommentContent(c.content)
-                }
-              />
+              <div className="comment-text">
+                {parseCommentContent(comment.content).map((token, index) => {
+
+                  if (token.type === 'link') {
+                    return (
+                      <a
+                        key={index}
+                        href={token.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="comment-link"
+                      >
+                        {token.value}
+                      </a>
+                    );
+                  }
+
+                  if (token.type === 'timestamp') {
+                    return (
+                      <span
+                        key={index}
+                        className="timestamp"
+                        data-seconds={token.seconds}
+                      >
+                        {token.value}
+                      </span>
+                    );
+                  }
+
+                  return (
+                    <span key={index}>
+                      {token.value}
+                    </span>
+                  );
+                })}
+              </div>
 
               <div className="comment-meta">
                 <small className="comment-type">
-                  {c.media_type}
+                  {comment.media_type}
                 </small>
 
                 <small className="comment-date">
-                  {c.created_at}
+                  {comment.created_at}
                 </small>
               </div>
 
             </div>
 
             <div className="comment-actions">
-              <button onClick={() => onEdit(c)}>
+              <button onClick={() => onEdit(comment)}>
                 編集
               </button>
 
-              <button onClick={() => onDelete(c.id)}>
+              <button onClick={() => onDelete(comment.id)}>
                 削除
               </button>
             </div>

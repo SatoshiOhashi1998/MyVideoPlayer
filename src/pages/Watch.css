@@ -239,3 +239,16 @@
 .comment-actions button:hover {
   background-color: #e0e0e0;
 }
+
+/* コメント内リンク */
+.comment-link {
+  color: #065fd4;
+  text-decoration: underline;
+}
+
+/* タイムスタンプ */
+.timestamp {
+  color: #065fd4;
+  cursor: pointer;
+  text-decoration: underline;
+}
