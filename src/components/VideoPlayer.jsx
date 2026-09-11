@@ -1,5 +1,5 @@
 // src/components/VideoPlayer.jsx
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
 import { useQueueStore } from '../store/useQueueStore';
@@ -11,6 +11,8 @@ export default function VideoPlayer() {
   const navigate = useNavigate();
   const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
+  const timerSeconds = useVideoStore((state) => state.timerSeconds);
+  const timerEndTime = useVideoStore((state) => state.timerEndTime);
   
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
@@ -35,6 +37,61 @@ export default function VideoPlayer() {
     changeVolume
   } = usePlayer('resume_time');
 
+  const fadeVolumeRef = useRef(null);
+
+  // スリープタイマーのフェードアウト
+  useEffect(() => {
+    const media = videoRef.current;
+
+    if (!media || timerEndTime === null) {
+      return;
+    }
+
+    // フェード開始時の音量を保存
+    if (fadeVolumeRef.current === null) {
+      fadeVolumeRef.current = media.volume;
+    }
+
+    const fadeDuration = 5 * 60 * 1000;
+
+    const updateVolume = () => {
+      const remainingMs = timerEndTime - Date.now();
+
+      if (remainingMs <= 0) {
+        media.volume = 0;
+        return;
+      }
+
+      if (remainingMs <= fadeDuration) {
+        const progress = remainingMs / fadeDuration;
+
+        const targetVolume =
+          fadeVolumeRef.current * progress;
+
+        // フェード処理によって音量が上がらないようにする
+        media.volume = Math.min(
+          media.volume,
+          targetVolume
+        );
+      }
+    };
+
+    updateVolume();
+
+    const intervalId = setInterval(updateVolume, 100);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timerEndTime]);
+
+  // タイマーが解除されたらフェード状態だけリセット
+  useEffect(() => {
+    if (timerSeconds === null) {
+      fadeVolumeRef.current = null;
+    }
+  }, [timerSeconds]);
+
   const handleDragStart = (e, index) => {
     setDraggedIndex(index);
     e.dataTransfer.effectAllowed = 'move';
@@ -47,7 +104,14 @@ export default function VideoPlayer() {
 
   const handleDrop = (e, targetIndex) => {
     e.preventDefault();
-    if (draggedIndex === null || draggedIndex === targetIndex) return;
+
+    if (
+      draggedIndex === null ||
+      draggedIndex === targetIndex
+    ) {
+      return;
+    }
+
     reorderQueue(draggedIndex, targetIndex);
     setDraggedIndex(null);
   };
@@ -59,7 +123,11 @@ export default function VideoPlayer() {
   };
 
   if (!currentVideo) {
-    return <div className="video-player-container">動画を選択してください</div>;
+    return (
+      <div className="video-player-container">
+        動画を選択してください
+      </div>
+    );
   }
 
   const toggleFullscreen = () => {
@@ -81,17 +149,39 @@ export default function VideoPlayer() {
         />
 
         <div className="video-controls">
-          <button onClick={() => skip(-10)}>10秒戻る</button>
-          <button onClick={() => skip(10)}>10秒進む</button>
-          <button onClick={() => changeVolume(0.1)}>音量 +10%</button>
-          <button onClick={() => changeVolume(-0.1)}>音量 -10%</button>
-          <button onClick={setIsLoop} className={isLoop ? 'active' : ''}>
+          <button onClick={() => skip(-10)}>
+            10秒戻る
+          </button>
+
+          <button onClick={() => skip(10)}>
+            10秒進む
+          </button>
+
+          <button onClick={() => changeVolume(0.1)}>
+            音量 +10%
+          </button>
+
+          <button onClick={() => changeVolume(-0.1)}>
+            音量 -10%
+          </button>
+
+          <button
+            onClick={setIsLoop}
+            className={isLoop ? 'active' : ''}
+          >
             ループ: {isLoop ? 'ON' : 'OFF'}
           </button>
-          <button onClick={setIsSectionLoop} className={isSectionLoop ? 'active' : ''}>
+
+          <button
+            onClick={setIsSectionLoop}
+            className={isSectionLoop ? 'active' : ''}
+          >
             区間リピート: {isSectionLoop ? 'ON' : 'OFF'}
           </button>
-          <button onClick={toggleFullscreen}>全画面</button>
+
+          <button onClick={toggleFullscreen}>
+            全画面
+          </button>
         </div>
 
         <SleepTimerControl />
@@ -99,20 +189,21 @@ export default function VideoPlayer() {
         {isSectionLoop && (
           <div className="section-loop-inputs">
             <label>
-              開始: 
-              <input 
-                type="text" 
-                value={startInput} 
+              開始:
+              <input
+                type="text"
+                value={startInput}
                 onChange={(e) => setStartInput(e.target.value)}
                 onBlur={handleStartBlur}
                 placeholder="00:00:00"
               />
             </label>
+
             <label>
-              終了: 
-              <input 
-                type="text" 
-                value={endInput} 
+              終了:
+              <input
+                type="text"
+                value={endInput}
                 onChange={(e) => setEndInput(e.target.value)}
                 onBlur={handleEndBlur}
                 placeholder="00:00:00"
@@ -125,19 +216,31 @@ export default function VideoPlayer() {
       {queue.length > 0 && (
         <div className="queue-container">
           <h3>再生キュー ({queue.length})</h3>
+
           <ul>
             {queue.map((video, index) => (
-              <li 
+              <li
                 key={video.id || index}
                 draggable
                 onDragStart={(e) => handleDragStart(e, index)}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, index)}
               >
-                <span onClick={() => handleQueueItemClick(video, index)}>
+                <span
+                  onClick={() =>
+                    handleQueueItemClick(video, index)
+                  }
+                >
                   {video.filetitle}
                 </span>
-                <button onClick={() => removeFromQueue(index)}>削除</button>
+
+                <button
+                  onClick={() =>
+                    removeFromQueue(index)
+                  }
+                >
+                  削除
+                </button>
               </li>
             ))}
           </ul>

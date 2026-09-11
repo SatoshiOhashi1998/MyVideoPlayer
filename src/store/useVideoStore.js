@@ -3,40 +3,65 @@ import { create } from 'zustand';
 
 export const useVideoStore = create((set, get) => ({
   currentVideo: null,
-  timerSeconds: null, // 残り秒数
-  timerId: null,      // setIntervalのID
+  timerSeconds: null,
+  timerEndTime: null,
+  timerId: null,
 
   setCurrentVideo: (video) => {
-    // 動画切り替え時にタイマーをリセットしないように削除
     set({ currentVideo: video });
   },
 
-  // タイマーを開始する（秒数を受け取る）
   startTimer: (seconds) => {
     get().clearTimer();
-    
-    set({ timerSeconds: seconds });
+
+    const endTime = Date.now() + seconds * 1000;
+
+    set({
+      timerSeconds: seconds,
+      timerEndTime: endTime
+    });
 
     const timerId = setInterval(() => {
-      const current = get().timerSeconds;
-      if (current <= 1) {
-        // 時間切れ：タイマーをクリアするだけで、currentVideo は null にしない
-        get().clearTimer();
-        
-        // タイマーが終了したことを各プレイヤーに伝えるために timerSeconds を 0 にする
-        set({ timerSeconds: 0 }); 
-      } else {
-        set({ timerSeconds: current - 1 });
+      const currentEndTime = get().timerEndTime;
+
+      if (!currentEndTime) {
+        return;
       }
+
+      const remainingSeconds = Math.ceil(
+        (currentEndTime - Date.now()) / 1000
+      );
+
+      if (remainingSeconds <= 0) {
+        clearInterval(get().timerId);
+
+        set({
+          timerId: null,
+          timerSeconds: 0
+        });
+
+        return;
+      }
+
+      set({
+        timerSeconds: remainingSeconds
+      });
     }, 1000);
-    
+
     set({ timerId });
   },
 
-  // タイマーを停止・クリアする
   clearTimer: () => {
     const { timerId } = get();
-    if (timerId) clearInterval(timerId);
-    set({ timerId: null, timerSeconds: null });
+
+    if (timerId) {
+      clearInterval(timerId);
+    }
+
+    set({
+      timerId: null,
+      timerSeconds: null,
+      timerEndTime: null
+    });
   },
 }));

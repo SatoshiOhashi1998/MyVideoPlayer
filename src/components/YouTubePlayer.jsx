@@ -1,3 +1,4 @@
+// src/components/YouTubePlayer.jsx
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useVideoStore } from '../store/useVideoStore';
@@ -12,6 +13,7 @@ export default function YouTubePlayer() {
   const currentVideo = useVideoStore((state) => state.currentVideo);
   const setCurrentVideo = useVideoStore((state) => state.setCurrentVideo);
   const timerSeconds = useVideoStore((state) => state.timerSeconds);
+  const timerEndTime = useVideoStore((state) => state.timerEndTime);
   const queue = useQueueStore((state) => state.queue);
   const removeFromQueue = useQueueStore((state) => state.removeFromQueue);
   const reorderQueue = useQueueStore((state) => state.reorderQueue);
@@ -30,6 +32,8 @@ export default function YouTubePlayer() {
   const isSectionLoopRef = useRef(isSectionLoop);
   const startTimeRef = useRef(startTime);
   const endTimeRef = useRef(endTime);
+
+  const fadeVolumeRef = useRef(null);
 
   // isLoop の状態を ref に同期させ、リロードを防ぐ
   useEffect(() => {
@@ -136,9 +140,6 @@ export default function YouTubePlayer() {
   }, [timerSeconds]);
 
   // 3. 区間リピートの監視
-  //
-  // YouTube IFrame API には HTML5 video の
-  // timeupdate イベントがないため、一定間隔で現在位置を確認する。
   useEffect(() => {
     if (!isSectionLoop) return;
 
@@ -166,7 +167,67 @@ export default function YouTubePlayer() {
     return () => clearInterval(intervalId);
   }, [isSectionLoop]);
 
-  // 4. 外部からのシーク操作（コメントクリック等）
+  // 4. スリープタイマーのフェードアウト
+  useEffect(() => {
+    const player = playerRef.current;
+
+    if (
+      !player ||
+      timerEndTime === null ||
+      typeof player.getVolume !== 'function' ||
+      typeof player.setVolume !== 'function'
+    ) {
+      return;
+    }
+
+    // フェード開始時の音量を保存
+    if (fadeVolumeRef.current === null) {
+      fadeVolumeRef.current = player.getVolume();
+    }
+
+    const fadeDuration = 5 * 60 * 1000;
+
+    const updateVolume = () => {
+      const remainingMs = timerEndTime - Date.now();
+
+      if (remainingMs <= 0) {
+        player.setVolume(0);
+        return;
+      }
+
+      if (remainingMs <= fadeDuration) {
+        const progress = remainingMs / fadeDuration;
+
+        const targetVolume =
+          fadeVolumeRef.current * progress;
+
+        // フェード処理によって音量が上がらないようにする
+        player.setVolume(
+          Math.min(
+            player.getVolume(),
+            targetVolume
+          )
+        );
+      }
+    };
+
+    updateVolume();
+
+    const intervalId = setInterval(updateVolume, 100);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timerEndTime]);
+
+  // タイマーが解除されたらフェード状態だけリセット
+  useEffect(() => {
+    if (timerSeconds === null) {
+      fadeVolumeRef.current = null;
+    }
+  }, [timerSeconds]);
+
+  // 5. 外部からのシーク操作（コメントクリック等）
   useEffect(() => {
     const handleSeek = (e) => {
       if (

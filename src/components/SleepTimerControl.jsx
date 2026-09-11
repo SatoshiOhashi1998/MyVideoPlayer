@@ -19,6 +19,7 @@ export default function SleepTimerControl() {
   const handleCustomSubmit = (e) => {
     e.preventDefault();
     const minutes = parseInt(customMinutes, 10);
+
     if (!isNaN(minutes) && minutes > 0) {
       startTimer(minutes * 60);
       setCustomMinutes('');
@@ -35,11 +36,23 @@ export default function SleepTimerControl() {
       ) : (
         <div className="timer-buttons">
           <span>スリープタイマー:</span>
-          <button onClick={() => startTimer(15 * 60)}>15分</button>
-          <button onClick={() => startTimer(30 * 60)}>30分</button>
-          <button onClick={() => startTimer(60 * 60)}>60分</button>
+
+          <button onClick={() => startTimer(15 * 60)}>
+            15分
+          </button>
+
+          <button onClick={() => startTimer(30 * 60)}>
+            30分
+          </button>
+
+          <button onClick={() => startTimer(60 * 60)}>
+            60分
+          </button>
           
-          <form onSubmit={handleCustomSubmit} className="timer-custom-form">
+          <form
+            onSubmit={handleCustomSubmit}
+            className="timer-custom-form"
+          >
             <input
               type="number"
               min="1"
@@ -47,7 +60,10 @@ export default function SleepTimerControl() {
               value={customMinutes}
               onChange={(e) => setCustomMinutes(e.target.value)}
             />
-            <button type="submit">設定</button>
+
+            <button type="submit">
+              設定
+            </button>
           </form>
         </div>
       )}
