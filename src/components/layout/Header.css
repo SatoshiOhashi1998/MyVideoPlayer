@@ -1,0 +1,115 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+}
+
+.app-logo {
+  width: 120px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #222;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-form {
+  position: relative;
+  display: flex;
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+
+.search-settings-button,
+.search-submit-button {
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f8f8f8;
+}
+
+.search-settings-button {
+  padding: 8px 12px;
+  border-left: 0;
+}
+
+.search-settings-button.active {
+  background: #eee;
+}
+
+.search-submit-button {
+  padding: 8px 20px;
+  border-left: 0;
+  border-radius: 0 20px 20px 0;
+}
+
+.search-settings {
+  position: absolute;
+  top: 45px;
+  right: 50px;
+  z-index: 200;
+  width: 200px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.search-settings-title {
+  margin-bottom: 8px;
+  color: #333;
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.search-type-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.search-type-option:last-child {
+  margin-bottom: 0;
+}
+
+.header-spacer {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .app-header {
+    padding: 10px;
+  }
+
+  .app-logo,
+  .header-spacer {
+    width: 80px;
+  }
+
+  .search-settings {
+    right: 45px;
+  }
+}
