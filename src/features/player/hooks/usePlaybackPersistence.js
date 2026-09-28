@@ -13,10 +13,23 @@ export function usePlaybackPersistence({
 
     const key = `${storagePrefix}_${mediaId}`
     const handleTimeUpdate = () => {
-      if (adapter.getCurrentTime() > 2) {
-        localStorage.setItem(key, String(adapter.getCurrentTime()))
-      }
+    const currentTime = adapter.getCurrentTime()
+    const duration = adapter.getDuration()
+
+    // 動画の終了付近まで到達したら、保存位置を削除する
+    if (
+      Number.isFinite(duration) &&
+      duration > 0 &&
+      currentTime >= duration - 2
+    ) {
+      localStorage.removeItem(key)
+      return
     }
+
+    if (currentTime > 2) {
+      localStorage.setItem(key, String(currentTime))
+    }
+  }
 
     const savedTime = localStorage.getItem(key)
     if (!skipRestore && savedTime) {
