@@ -1,5 +1,8 @@
 {
-	"folders":
-	[
-	]
+    "folders":
+    [
+        {
+            "path": "." // またはプロジェクトフォルダの絶対パス（例: "C:/Projects/my-react-app"）
+        }
+    ]
 }
