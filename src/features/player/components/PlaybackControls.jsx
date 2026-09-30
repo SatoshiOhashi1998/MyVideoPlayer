@@ -18,13 +18,6 @@ export default function PlaybackControls({
   const [showSectionLoop, setShowSectionLoop] = useState(false)
   const [showSleepTimer, setShowSleepTimer] = useState(false)
 
-  const handleSectionLoopToggle = () => {
-    const nextState = !isSectionLoop
-
-    toggleSectionLoop()
-    setShowSectionLoop(nextState)
-  }
-
   return (
     <div className="playback-controls">
       <div className="playback-control-bar">
@@ -52,10 +45,10 @@ export default function PlaybackControls({
         </button>
 
         <button
-          className={isSectionLoop ? 'active' : ''}
-          onClick={handleSectionLoopToggle}
+          className={showSectionLoop ? 'active' : ''}
+          onClick={() => setShowSectionLoop((value) => !value)}
         >
-          🔂 {isSectionLoop ? '区間ループON' : '区間ループOFF'}
+          🔂 区間ループ
         </button>
 
         <button
@@ -74,21 +67,49 @@ export default function PlaybackControls({
 
       {showSectionLoop && (
         <div className="player-control-panel section-loop-panel">
-          <SectionLoopControl
-            visible
-            startInput={sectionLoop.startInput}
-            setStartInput={sectionLoop.setStartInput}
-            handleStartBlur={sectionLoop.handleStartBlur}
-            endInput={sectionLoop.endInput}
-            setEndInput={sectionLoop.setEndInput}
-            handleEndBlur={sectionLoop.handleEndBlur}
-          />
+          <div className="player-control-panel-header">
+            <span>🔂 区間ループ設定</span>
+
+            <button
+              className="player-control-panel-close"
+              onClick={() => setShowSectionLoop(false)}
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="player-control-panel-content">
+            <SectionLoopControl
+              visible
+              isSectionLoop={isSectionLoop}
+              toggleSectionLoop={toggleSectionLoop}
+              startInput={sectionLoop.startInput}
+              setStartInput={sectionLoop.setStartInput}
+              handleStartBlur={sectionLoop.handleStartBlur}
+              endInput={sectionLoop.endInput}
+              setEndInput={sectionLoop.setEndInput}
+              handleEndBlur={sectionLoop.handleEndBlur}
+            />
+          </div>
         </div>
       )}
 
       {showSleepTimer && (
         <div className="player-control-panel sleep-timer-panel">
-          <SleepTimerControl />
+          <div className="player-control-panel-header">
+            <span>💤 スリープタイマー</span>
+
+            <button
+              className="player-control-panel-close"
+              onClick={() => setShowSleepTimer(false)}
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="player-control-panel-content">
+            <SleepTimerControl />
+          </div>
         </div>
       )}
     </div>

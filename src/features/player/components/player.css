@@ -102,6 +102,74 @@
   background: #1a1a1a;
 }
 
+.player-control-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.player-control-panel-close {
+  padding: 2px 8px !important;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px !important;
+  line-height: 1.2;
+}
+
+.player-control-panel-close:hover {
+  background: #333;
+}
+
+.player-control-panel-content {
+  width: 100%;
+}
+
+.section-loop-control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-loop-control button {
+  padding: 6px 10px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+}
+
+.section-loop-control button:hover {
+  background: #333;
+}
+
+.section-loop-control button.active {
+  background: #444;
+  border-color: #666;
+}
+
+.section-loop-control label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-loop-control input {
+  width: 100px;
+  padding: 6px 8px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  box-sizing: border-box;
+}
+
 /* --------------------------------------------------
    Player Control Panels
 -------------------------------------------------- */
