@@ -4,12 +4,23 @@ export function createYouTubeAdapter(player) {
   return {
     play: () => player.playVideo(),
     pause: () => player.pauseVideo(),
-    seek: (seconds) => player.seekTo(Math.max(Number(seconds) || 0, 0), true),
+
+    isPlaying: () => player.getPlayerState?.() === 1,
+
+    seek: (seconds) =>
+      player.seekTo(Math.max(Number(seconds) || 0, 0), true),
+
     getCurrentTime: () => player.getCurrentTime?.() || 0,
     getDuration: () => player.getDuration?.() || 0,
+
     getVolume: () => (player.getVolume?.() ?? 100) / 100,
+
     setVolume: (value) => {
-      const normalized = Math.min(Math.max(Number(value) || 0, 0), 1)
+      const normalized = Math.min(
+        Math.max(Number(value) || 0, 0),
+        1,
+      )
+
       player.setVolume(normalized * 100)
     },
   }

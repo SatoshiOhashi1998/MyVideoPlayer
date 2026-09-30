@@ -7,7 +7,7 @@ import SectionLoopControl from './SectionLoopControl.jsx'
 import SleepTimerControl from './SleepTimerControl.jsx'
 import DownloadModal from '../../download/components/DownloadModal.jsx'
 
-export default function YouTubePlayer({ media }) {
+export default function YouTubePlayer({ media, onControllerReady }) {
   const playerRef = useRef(null)
   const containerRef = useRef(null)
   const adapterRef = useRef(null)
@@ -24,6 +24,12 @@ export default function YouTubePlayer({ media }) {
     currentMedia: media,
     enablePersistence: false,
   })
+
+  useEffect(() => {
+  if (!ready) return
+
+  onControllerReady?.(controller)
+}, [ready, onControllerReady])
 
   useEffect(() => {
     console.log('YouTubePlayer MOUNT')

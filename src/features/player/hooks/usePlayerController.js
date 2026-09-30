@@ -130,6 +130,21 @@ export function usePlayerController({
     adapter.setVolume(Math.min(Math.max(adapter.getVolume() + amount, 0), 1))
   }
 
+  const togglePlay = async () => {
+  const adapter = adapterRef.current
+  if (!adapter) return
+
+  if (adapter.isPlaying()) {
+    adapter.pause()
+  } else {
+    try {
+      await adapter.play()
+    } catch {
+      // ブラウザの再生制限などは無視
+    }
+  }
+}
+
   return {
     isLoop,
     toggleLoop,
@@ -137,5 +152,6 @@ export function usePlayerController({
     handleEnded,
     skip,
     changeVolume,
+    togglePlay,
   }
 }

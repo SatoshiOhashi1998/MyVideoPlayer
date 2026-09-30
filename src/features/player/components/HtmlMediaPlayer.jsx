@@ -8,13 +8,19 @@ import PlaybackControls from './PlaybackControls.jsx'
 import SectionLoopControl from './SectionLoopControl.jsx'
 import SleepTimerControl from './SleepTimerControl.jsx'
 
-export default function HtmlMediaPlayer({ media }) {
+export default function HtmlMediaPlayer({ media, onControllerReady, }) {
   const mediaRef = useRef(null)
   const adapterRef = useRef(null)
   const [ready, setReady] = useState(false)
   const setCurrentMedia = usePlaybackStore((state) => state.setCurrentMedia)
   const isAudio = media.type === MEDIA_TYPES.AUDIO
   const storagePrefix = isAudio ? 'resume_time_audio' : 'resume_time'
+
+  useEffect(() => {
+    if (!ready) return
+
+    onControllerReady?.(controller)
+  }, [ready, onControllerReady])
 
   useEffect(() => {
     setCurrentMedia(media)
