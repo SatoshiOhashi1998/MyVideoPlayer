@@ -3,8 +3,6 @@ import { usePlaybackStore } from '../../../stores/playbackStore.js'
 import { createYouTubeAdapter, loadYouTubeIframeApi } from '../adapters/YouTubeAdapter.js'
 import { usePlayerController } from '../hooks/usePlayerController.js'
 import PlaybackControls from './PlaybackControls.jsx'
-import SectionLoopControl from './SectionLoopControl.jsx'
-import SleepTimerControl from './SleepTimerControl.jsx'
 import DownloadModal from '../../download/components/DownloadModal.jsx'
 import { useScreenWakeLock } from '../hooks/useScreenWakeLock.js'
 
@@ -25,7 +23,7 @@ export default function YouTubePlayer({ media }) {
     currentMedia: media,
     enablePersistence: false,
   })
-  
+
   useScreenWakeLock(true)
 
   useEffect(() => {
@@ -146,19 +144,15 @@ export default function YouTubePlayer({ media }) {
         onVolumeUp={() => controller.changeVolume(0.1)}
         onFullscreen={toggleFullscreen}
         showFullscreen
+        sectionLoop={{
+          startInput: controller.startInput,
+          setStartInput: controller.setStartInput,
+          handleStartBlur: controller.handleStartBlur,
+          endInput: controller.endInput,
+          setEndInput: controller.setEndInput,
+          handleEndBlur: controller.handleEndBlur,
+        }}
       />
-
-      <SectionLoopControl
-        visible={controller.isSectionLoop}
-        startInput={controller.startInput}
-        setStartInput={controller.setStartInput}
-        handleStartBlur={controller.handleStartBlur}
-        endInput={controller.endInput}
-        setEndInput={controller.setEndInput}
-        handleEndBlur={controller.handleEndBlur}
-      />
-
-      <SleepTimerControl />
 
       <DownloadModal
         videoId={media.id}

@@ -5,8 +5,6 @@ import { API_CONFIG, joinUrl } from '../../../services/api/config.js'
 import { createHtmlMediaAdapter } from '../adapters/HtmlMediaAdapter.js'
 import { usePlayerController } from '../hooks/usePlayerController.js'
 import PlaybackControls from './PlaybackControls.jsx'
-import SectionLoopControl from './SectionLoopControl.jsx'
-import SleepTimerControl from './SleepTimerControl.jsx'
 
 export default function HtmlMediaPlayer({ media }) {
   const mediaRef = useRef(null)
@@ -88,18 +86,14 @@ export default function HtmlMediaPlayer({ media }) {
         onVolumeUp={() => controller.changeVolume(0.1)}
         onFullscreen={toggleFullscreen}
         showFullscreen={!isAudio}
-      />
-
-      <SleepTimerControl />
-
-      <SectionLoopControl
-        visible={controller.isSectionLoop}
-        startInput={controller.startInput}
-        setStartInput={controller.setStartInput}
-        handleStartBlur={controller.handleStartBlur}
-        endInput={controller.endInput}
-        setEndInput={controller.setEndInput}
-        handleEndBlur={controller.handleEndBlur}
+        sectionLoop={{
+          startInput: controller.startInput,
+          setStartInput: controller.setStartInput,
+          handleStartBlur: controller.handleStartBlur,
+          endInput: controller.endInput,
+          setEndInput: controller.setEndInput,
+          handleEndBlur: controller.handleEndBlur,
+        }}
       />
     </>
   )
