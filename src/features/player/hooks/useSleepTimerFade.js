@@ -1,18 +1,34 @@
 import { useEffect, useRef } from 'react'
+import { useSleepTimerStore } from '../../../stores/sleepTimerStore.js'
 
-export function useSleepTimerFade({ adapterRef, ready, timerStartTime, timerEndTime, timerSeconds }) {
+export function useSleepTimerFade({
+  adapterRef,
+  ready,
+  timerStartTime,
+  timerEndTime,
+  timerSeconds,
+}) {
   const fadeVolumeRef = useRef(null)
+  const completedRef = useRef(false)
+
+  const clearTimer = useSleepTimerStore((state) => state.clearTimer)
 
   useEffect(() => {
     if (timerSeconds === null) {
       fadeVolumeRef.current = null
+      completedRef.current = false
     }
   }, [timerSeconds])
 
   useEffect(() => {
     const adapter = adapterRef.current
 
-    if (!adapter || !ready || timerStartTime === null || timerEndTime === null) {
+    if (
+      !adapter ||
+      !ready ||
+      timerStartTime === null ||
+      timerEndTime === null
+    ) {
       return undefined
     }
 
@@ -27,7 +43,17 @@ export function useSleepTimerFade({ adapterRef, ready, timerStartTime, timerEndT
       const remainingMs = timerEndTime - Date.now()
 
       if (remainingMs <= 0) {
-        adapter.setVolume(0)
+        if (completedRef.current) return
+
+        completedRef.current = true
+
+        adapter.pause()
+
+        if (fadeVolumeRef.current !== null) {
+          adapter.setVolume(fadeVolumeRef.current)
+        }
+
+        clearTimer()
         return
       }
 
@@ -39,11 +65,22 @@ export function useSleepTimerFade({ adapterRef, ready, timerStartTime, timerEndT
 
       const progress = remainingMs / fadeDuration
       const targetVolume = fadeVolumeRef.current * progress
-      adapter.setVolume(Math.min(adapter.getVolume(), targetVolume))
+
+      adapter.setVolume(
+        Math.min(adapter.getVolume(), targetVolume),
+      )
     }
 
     updateVolume()
+
     const intervalId = window.setInterval(updateVolume, 100)
+
     return () => window.clearInterval(intervalId)
-  }, [adapterRef, ready, timerStartTime, timerEndTime])
+  }, [
+    adapterRef,
+    ready,
+    timerStartTime,
+    timerEndTime,
+    clearTimer,
+  ])
 }
