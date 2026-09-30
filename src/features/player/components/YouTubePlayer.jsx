@@ -6,6 +6,7 @@ import PlaybackControls from './PlaybackControls.jsx'
 import SectionLoopControl from './SectionLoopControl.jsx'
 import SleepTimerControl from './SleepTimerControl.jsx'
 import DownloadModal from '../../download/components/DownloadModal.jsx'
+import useScreenWakeLock from '../hooks/useScreenWakeLock.js'
 
 export default function YouTubePlayer({ media, onControllerReady }) {
   const playerRef = useRef(null)
