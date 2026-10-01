@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function MiniPlayerControls({
   media,
+  isPlaying,
   onPlayPause,
 }) {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ export default function MiniPlayerControls({
   return (
     <div className="mini-player-controls">
       <button onClick={onPlayPause}>
-        ▶ / ❚❚
+        {isPlaying ? '❚❚' : '▶'}
       </button>
 
       <button onClick={handleWatch}>

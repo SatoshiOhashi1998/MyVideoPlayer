@@ -110,6 +110,7 @@ export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
       {mode === 'mini' && (
         <MiniPlayerControls
           media={media}
+          isPlaying={controller.isPlaying}
           onPlayPause={controller.togglePlay}
         />
       )}

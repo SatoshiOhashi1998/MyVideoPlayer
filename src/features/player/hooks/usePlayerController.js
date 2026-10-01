@@ -27,19 +27,38 @@ export function usePlayerController({
   const timerEndTime = useSleepTimerStore((state) => state.timerEndTime)
 
   const [isLoop, setIsLoop] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const isLoopRef = useRef(false)
   const sectionLoopRef = useRef({ enabled: false, start: 0, end: 0 })
   const lastSeekTokenRef = useRef(null)
 
-  const togglePlay = useCallback(() => {
+  const togglePlay = useCallback(async () => {
     if (!ready || !adapterRef.current) return
 
-    if (adapterRef.current.isPlaying()) {
-      adapterRef.current.pause()
-    } else {
-      adapterRef.current.play()
+    const adapter = adapterRef.current
+
+    if (adapter.isPlaying()) {
+      adapter.pause()
+      setIsPlaying(false)
+      return
     }
-  }, [ready])
+
+    try {
+      await adapter.play()
+      setIsPlaying(true)
+    } catch (error) {
+      console.error('再生に失敗しました:', error)
+    }
+  }, [adapterRef, ready])
+
+  useEffect(() => {
+  if (!ready || !adapterRef.current) {
+    setIsPlaying(false)
+    return
+  }
+
+  setIsPlaying(adapterRef.current.isPlaying())
+}, [adapterRef, ready])
 
   useEffect(() => {
     isLoopRef.current = isLoop
@@ -148,5 +167,6 @@ export function usePlayerController({
     skip,
     changeVolume,
     togglePlay,
+    isPlaying,
   }
 }
