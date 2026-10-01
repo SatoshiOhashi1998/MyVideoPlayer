@@ -32,6 +32,10 @@ export function usePlayerController({
   const sectionLoopRef = useRef({ enabled: false, start: 0, end: 0 })
   const lastSeekTokenRef = useRef(null)
 
+  const updatePlayingState = useCallback((value) => {
+  setIsPlaying(value)
+}, [])
+
   const togglePlay = useCallback(async () => {
     if (!ready || !adapterRef.current) return
 
@@ -168,5 +172,6 @@ export function usePlayerController({
     changeVolume,
     togglePlay,
     isPlaying,
+    updatePlayingState,
   }
 }

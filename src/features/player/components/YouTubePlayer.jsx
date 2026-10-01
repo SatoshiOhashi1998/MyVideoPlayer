@@ -79,6 +79,15 @@ export default function YouTubePlayer({ media, mode = 'watch' }) {
             },
 
             onStateChange: (event) => {
+              if (event.data === YT.PlayerState.PLAYING) {
+                controller.updatePlayingState(true)
+              } else if (
+                event.data === YT.PlayerState.PAUSED ||
+                event.data === YT.PlayerState.ENDED
+              ) {
+                controller.updatePlayingState(false)
+              }
+
               if (event.data === YT.PlayerState.ENDED) {
                 handleEndedRef.current?.()
               }

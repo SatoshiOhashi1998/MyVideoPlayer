@@ -77,6 +77,8 @@ export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
         {isAudio && <div className="audio-icon-pulse">🎵</div>}
         <MediaElement
           ref={mediaRef}
+          onPlay={() => controller.updatePlayingState(true)}
+          onPause={() => controller.updatePlayingState(false)}
           controls
           onLoadedMetadata={handleLoadedMetadata}
           onEnded={controller.handleEnded}
