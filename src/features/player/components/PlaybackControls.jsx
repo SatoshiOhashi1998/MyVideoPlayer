@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import SectionLoopControl from './SectionLoopControl.jsx'
 import SleepTimerControl from './SleepTimerControl.jsx'
+import PlayerControlPanel from './PlayerControlPanel.jsx'
 
 export default function PlaybackControls({
   isLoop,
@@ -66,51 +67,33 @@ export default function PlaybackControls({
       </div>
 
       {showSectionLoop && (
-        <div className="player-control-panel section-loop-panel">
-          <div className="player-control-panel-header">
-            <span>🔂 区間ループ設定</span>
-
-            <button
-              className="player-control-panel-close"
-              onClick={() => setShowSectionLoop(false)}
-            >
-              ×
-            </button>
-          </div>
-
-          <div className="player-control-panel-content">
-            <SectionLoopControl
-              visible
-              isSectionLoop={isSectionLoop}
-              toggleSectionLoop={toggleSectionLoop}
-              startInput={sectionLoop.startInput}
-              setStartInput={sectionLoop.setStartInput}
-              handleStartBlur={sectionLoop.handleStartBlur}
-              endInput={sectionLoop.endInput}
-              setEndInput={sectionLoop.setEndInput}
-              handleEndBlur={sectionLoop.handleEndBlur}
-            />
-          </div>
-        </div>
+        <PlayerControlPanel
+          title="🔂 区間ループ設定"
+          onClose={() => setShowSectionLoop(false)}
+          className="section-loop-panel"
+        >
+          <SectionLoopControl
+            visible
+            isSectionLoop={isSectionLoop}
+            toggleSectionLoop={toggleSectionLoop}
+            startInput={sectionLoop.startInput}
+            setStartInput={sectionLoop.setStartInput}
+            handleStartBlur={sectionLoop.handleStartBlur}
+            endInput={sectionLoop.endInput}
+            setEndInput={sectionLoop.setEndInput}
+            handleEndBlur={sectionLoop.handleEndBlur}
+          />
+        </PlayerControlPanel>
       )}
 
       {showSleepTimer && (
-        <div className="player-control-panel sleep-timer-panel">
-          <div className="player-control-panel-header">
-            <span>💤 スリープタイマー</span>
-
-            <button
-              className="player-control-panel-close"
-              onClick={() => setShowSleepTimer(false)}
-            >
-              ×
-            </button>
-          </div>
-
-          <div className="player-control-panel-content">
-            <SleepTimerControl />
-          </div>
-        </div>
+        <PlayerControlPanel
+          title="💤 スリープタイマー"
+          onClose={() => setShowSleepTimer(false)}
+          className="sleep-timer-panel"
+        >
+          <SleepTimerControl />
+        </PlayerControlPanel>
       )}
     </div>
   )
