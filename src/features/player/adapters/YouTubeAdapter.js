@@ -4,6 +4,7 @@ export function createYouTubeAdapter(player) {
   return {
     play: () => player.playVideo(),
     pause: () => player.pauseVideo(),
+    isPlaying: () => player.getPlayerState() === 1,
     seek: (seconds) => player.seekTo(Math.max(Number(seconds) || 0, 0), true),
     getCurrentTime: () => player.getCurrentTime?.() || 0,
     getDuration: () => player.getDuration?.() || 0,

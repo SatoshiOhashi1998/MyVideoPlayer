@@ -5,6 +5,7 @@ import { API_CONFIG, joinUrl } from '../../../services/api/config.js'
 import { createHtmlMediaAdapter } from '../adapters/HtmlMediaAdapter.js'
 import { usePlayerController } from '../hooks/usePlayerController.js'
 import PlaybackControls from './PlaybackControls.jsx'
+import MiniPlayerControls from './MiniPlayerControls.jsx'
 
 export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
   const mediaRef = useRef(null)
@@ -64,7 +65,15 @@ export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
     <>
       <h3>{isAudio ? '音声再生中' : '再生中'}: {media.filetitle}</h3>
 
-      <div className={isAudio ? 'audio-visual-box' : 'video-visual-box'}>
+      <div
+        className={
+          mode === 'mini'
+            ? 'mini-media-container'
+            : isAudio
+              ? 'audio-visual-box'
+              : 'video-visual-box'
+        }
+      >
         {isAudio && <div className="audio-icon-pulse">🎵</div>}
         <MediaElement
           ref={mediaRef}
@@ -95,6 +104,13 @@ export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
             setEndInput: controller.setEndInput,
             handleEndBlur: controller.handleEndBlur,
           }}
+        />
+      )}
+
+      {mode === 'mini' && (
+        <MiniPlayerControls
+          media={media}
+          onPlayPause={controller.togglePlay}
         />
       )}
     </>

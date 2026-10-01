@@ -5,6 +5,7 @@ import { usePlayerController } from '../hooks/usePlayerController.js'
 import PlaybackControls from './PlaybackControls.jsx'
 import DownloadModal from '../../download/components/DownloadModal.jsx'
 import { useScreenWakeLock } from '../hooks/useScreenWakeLock.js'
+import MiniPlayerControls from './MiniPlayerControls.jsx'
 
 export default function YouTubePlayer({ media, mode = 'watch' }) {
   const playerRef = useRef(null)
@@ -129,7 +130,13 @@ export default function YouTubePlayer({ media, mode = 'watch' }) {
         </button>
       </div>
 
-      <div className="youtube-player-container">
+      <div
+        className={
+          mode === 'mini'
+            ? 'youtube-player-container youtube-player-mini'
+            : 'youtube-player-container'
+        }
+      >
         <div ref={containerRef} />
       </div>
 
@@ -153,6 +160,13 @@ export default function YouTubePlayer({ media, mode = 'watch' }) {
             setEndInput: controller.setEndInput,
             handleEndBlur: controller.handleEndBlur,
           }}
+        />
+      )}
+
+      {mode === 'mini' && (
+        <MiniPlayerControls
+          media={media}
+          onPlayPause={controller.togglePlay}
         />
       )}
 
