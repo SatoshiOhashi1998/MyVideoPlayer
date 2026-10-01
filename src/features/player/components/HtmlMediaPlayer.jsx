@@ -79,7 +79,7 @@ export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
           ref={mediaRef}
           onPlay={() => controller.updatePlayingState(true)}
           onPause={() => controller.updatePlayingState(false)}
-          controls
+          controls={mode === 'watch'}
           onLoadedMetadata={handleLoadedMetadata}
           onEnded={controller.handleEnded}
           src={mediaUrl}
