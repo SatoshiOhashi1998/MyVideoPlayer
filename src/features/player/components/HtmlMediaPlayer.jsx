@@ -6,7 +6,7 @@ import { createHtmlMediaAdapter } from '../adapters/HtmlMediaAdapter.js'
 import { usePlayerController } from '../hooks/usePlayerController.js'
 import PlaybackControls from './PlaybackControls.jsx'
 
-export default function HtmlMediaPlayer({ media }) {
+export default function HtmlMediaPlayer({ media, mode = 'watch' }) {
   const mediaRef = useRef(null)
   const adapterRef = useRef(null)
   const [ready, setReady] = useState(false)
@@ -75,26 +75,28 @@ export default function HtmlMediaPlayer({ media }) {
         />
       </div>
 
-      <PlaybackControls
-        isLoop={controller.isLoop}
-        toggleLoop={controller.toggleLoop}
-        isSectionLoop={controller.isSectionLoop}
-        toggleSectionLoop={controller.toggleSectionLoop}
-        onRewind={() => controller.skip(-10)}
-        onForward={() => controller.skip(10)}
-        onVolumeDown={() => controller.changeVolume(-0.1)}
-        onVolumeUp={() => controller.changeVolume(0.1)}
-        onFullscreen={toggleFullscreen}
-        showFullscreen={!isAudio}
-        sectionLoop={{
-          startInput: controller.startInput,
-          setStartInput: controller.setStartInput,
-          handleStartBlur: controller.handleStartBlur,
-          endInput: controller.endInput,
-          setEndInput: controller.setEndInput,
-          handleEndBlur: controller.handleEndBlur,
-        }}
-      />
+      {mode === 'watch' && (
+        <PlaybackControls
+          isLoop={controller.isLoop}
+          toggleLoop={controller.toggleLoop}
+          isSectionLoop={controller.isSectionLoop}
+          toggleSectionLoop={controller.toggleSectionLoop}
+          onRewind={() => controller.skip(-10)}
+          onForward={() => controller.skip(10)}
+          onVolumeDown={() => controller.changeVolume(-0.1)}
+          onVolumeUp={() => controller.changeVolume(0.1)}
+          onFullscreen={toggleFullscreen}
+          showFullscreen={!isAudio}
+          sectionLoop={{
+            startInput: controller.startInput,
+            setStartInput: controller.setStartInput,
+            handleStartBlur: controller.handleStartBlur,
+            endInput: controller.endInput,
+            setEndInput: controller.setEndInput,
+            handleEndBlur: controller.handleEndBlur,
+          }}
+        />
+      )}
     </>
   )
 }

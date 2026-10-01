@@ -1,10 +1,11 @@
-import QueuePanel from "./QueuePanel.jsx";
+import QueuePanel from './QueuePanel.jsx'
 
-export default function PlayerShell({ children }) {
+export default function PlayerShell({ children, mode = 'watch' }) {
   return (
-    <div className="player-shell">
+    <div className={`player-shell player-shell-${mode}`}>
       <section className="player-main">{children}</section>
-      <QueuePanel />
+
+      {mode === 'watch' && <QueuePanel />}
     </div>
-  );
+  )
 }

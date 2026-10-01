@@ -6,7 +6,7 @@ import PlaybackControls from './PlaybackControls.jsx'
 import DownloadModal from '../../download/components/DownloadModal.jsx'
 import { useScreenWakeLock } from '../hooks/useScreenWakeLock.js'
 
-export default function YouTubePlayer({ media }) {
+export default function YouTubePlayer({ media, mode = 'watch' }) {
   const playerRef = useRef(null)
   const containerRef = useRef(null)
   const adapterRef = useRef(null)
@@ -133,26 +133,28 @@ export default function YouTubePlayer({ media }) {
         <div ref={containerRef} />
       </div>
 
-      <PlaybackControls
-        isLoop={controller.isLoop}
-        toggleLoop={controller.toggleLoop}
-        isSectionLoop={controller.isSectionLoop}
-        toggleSectionLoop={controller.toggleSectionLoop}
-        onRewind={() => controller.skip(-10)}
-        onForward={() => controller.skip(10)}
-        onVolumeDown={() => controller.changeVolume(-0.1)}
-        onVolumeUp={() => controller.changeVolume(0.1)}
-        onFullscreen={toggleFullscreen}
-        showFullscreen
-        sectionLoop={{
-          startInput: controller.startInput,
-          setStartInput: controller.setStartInput,
-          handleStartBlur: controller.handleStartBlur,
-          endInput: controller.endInput,
-          setEndInput: controller.setEndInput,
-          handleEndBlur: controller.handleEndBlur,
-        }}
-      />
+      {mode === 'watch' && (
+        <PlaybackControls
+          isLoop={controller.isLoop}
+          toggleLoop={controller.toggleLoop}
+          isSectionLoop={controller.isSectionLoop}
+          toggleSectionLoop={controller.toggleSectionLoop}
+          onRewind={() => controller.skip(-10)}
+          onForward={() => controller.skip(10)}
+          onVolumeDown={() => controller.changeVolume(-0.1)}
+          onVolumeUp={() => controller.changeVolume(0.1)}
+          onFullscreen={toggleFullscreen}
+          showFullscreen
+          sectionLoop={{
+            startInput: controller.startInput,
+            setStartInput: controller.setStartInput,
+            handleStartBlur: controller.handleStartBlur,
+            endInput: controller.endInput,
+            setEndInput: controller.setEndInput,
+            handleEndBlur: controller.handleEndBlur,
+          }}
+        />
+      )}
 
       <DownloadModal
         videoId={media.id}
