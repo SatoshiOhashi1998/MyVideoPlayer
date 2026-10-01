@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom'
 import { usePlaybackStore } from '../../../stores/playbackStore.js'
 import { MEDIA_TYPES } from '../../../domain/mediaTypes.js'
 import PlayerShell from './PlayerShell.jsx'
-import MiniPlayer from './MiniPlayer.jsx'
 import HtmlMediaPlayer from './HtmlMediaPlayer.jsx'
 import YouTubePlayer from './YouTubePlayer.jsx'
 import './player.css'
@@ -32,16 +31,8 @@ export default function UniversalPlayer() {
       />
     )
 
-  if (mode === 'mini') {
-    return (
-      <MiniPlayer media={currentMedia}>
-        {player}
-      </MiniPlayer>
-    )
-  }
-
   return (
-    <PlayerShell mode="watch">
+    <PlayerShell mode={mode}>
       {player}
     </PlayerShell>
   )
