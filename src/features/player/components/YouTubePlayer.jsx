@@ -109,7 +109,7 @@ export default function YouTubePlayer({ media }) {
     if (!document.fullscreenElement) {
       try {
         await document
-          .querySelector('.youtube-player-container-wrapper')
+          .querySelector('.youtube-player-container')
           ?.requestFullscreen()
       } catch (error) {
         console.error('全画面表示に失敗しました:', error)
