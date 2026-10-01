@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { mediaApi } from '../../../services/api/mediaApi.js'
 import { youtubeApi } from '../../../services/api/youtubeApi.js'
 import { MEDIA_TYPES } from '../../../domain/mediaTypes.js'
+import { useYouTubeSearchStore } from '../../../stores/youtubeSearchStore.js'
 
 const LIMIT = 45
 
@@ -14,6 +15,11 @@ export function useMediaLibrary() {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const cachedQuery = useYouTubeSearchStore((state) => state.query)
+  const cachedItems = useYouTubeSearchStore((state) => state.items)
+  const setSearchResults = useYouTubeSearchStore(
+    (state) => state.setSearchResults,
+)
 
   useEffect(() => {
     let cancelled = false
@@ -29,10 +35,20 @@ export function useMediaLibrary() {
             return
           }
 
-          const youtubeItems = await youtubeApi.search(query)
-          if (!cancelled) setItems(youtubeItems)
-          return
-        }
+          if (cachedQuery === query) {
+            if (!cancelled) setItems(cachedItems)
+            return
+          }
+
+  const youtubeItems = await youtubeApi.search(query)
+
+  if (!cancelled) {
+    setSearchResults(query, youtubeItems)
+    setItems(youtubeItems)
+  }
+
+  return
+}
 
         const [videos, audios] = await Promise.all([
           mediaApi.getVideos(),
