@@ -4,6 +4,9 @@ export function createHtmlMediaAdapter(element) {
   return {
     play: () => element.play(),
     pause: () => element.pause(),
+
+    isPlaying: () => !element.paused,
+    
     seek: (seconds) => {
       element.currentTime = Math.max(Number(seconds) || 0, 0)
     },

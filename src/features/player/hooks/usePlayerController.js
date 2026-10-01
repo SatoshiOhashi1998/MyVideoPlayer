@@ -31,6 +31,20 @@ export function usePlayerController({
   const sectionLoopRef = useRef({ enabled: false, start: 0, end: 0 })
   const lastSeekTokenRef = useRef(null)
 
+  const togglePlay = useCallback(async () => {
+    if (!ready || !adapterRef.current) return
+
+    if (adapterRef.current.isPlaying()) {
+      adapterRef.current.pause()
+    } else {
+      try {
+        await adapterRef.current.play()
+      } catch (error) {
+        console.error('再生に失敗しました:', error)
+      }
+    }
+  }, [ready])
+
   useEffect(() => {
     isLoopRef.current = isLoop
   }, [isLoop])
@@ -137,5 +151,6 @@ export function usePlayerController({
     handleEnded,
     skip,
     changeVolume,
+    togglePlay,
   }
 }
