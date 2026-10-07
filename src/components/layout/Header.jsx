@@ -13,6 +13,7 @@ export default function Header() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const settingsRef = useRef(null)
+  const firstSearchTypeRef = useRef(null)
   const [input, setInput] = useState(searchParams.get('q') || '')
   const [searchType, setSearchType] = useState(searchParams.get('search_type') || 'default')
   const [showSettings, setShowSettings] = useState(false)
@@ -21,6 +22,12 @@ export default function Header() {
     setInput(searchParams.get('q') || '')
     setSearchType(searchParams.get('search_type') || 'default')
   }, [searchParams])
+
+  useEffect(() => {
+    if (showSettings) {
+      firstSearchTypeRef.current?.focus()
+    }
+  }, [showSettings])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -74,9 +81,10 @@ export default function Header() {
         {showSettings && (
           <div ref={settingsRef} className="search-settings">
             <div className="search-settings-title">検索対象</div>
-            {SEARCH_TYPES.map(([value, label]) => (
+            {SEARCH_TYPES.map(([value, label], index) => (
               <label key={value} className="search-type-option">
                 <input
+                  ref={index === 0 ? firstSearchTypeRef : null}
                   type="radio"
                   name="searchType"
                   value={value}
