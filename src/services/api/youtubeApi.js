@@ -10,26 +10,38 @@ export const youtubeApi = {
       { params: { q: query } },
     )
 
-    return (response.data?.items || []).map((item) =>
+    return (response.data?.data || []).map((item) =>
       normalizeMedia(item, MEDIA_TYPES.YOUTUBE),
     )
   },
 
   async getVideoInfo(id) {
     const response = await apiClient.get(
-      joinUrl(API_CONFIG.youtubeBase, `api/youtube/${encodeURIComponent(id)}/info`),
+      joinUrl(
+        API_CONFIG.youtubeBase,
+        `api/youtube/${encodeURIComponent(id)}/info`,
+      ),
     )
-    return normalizeMedia(response.data, MEDIA_TYPES.YOUTUBE)
+
+    return normalizeMedia(response.data?.data, MEDIA_TYPES.YOUTUBE)
   },
 
   async getDownloadDirectories() {
     const response = await apiClient.get(
       joinUrl(API_CONFIG.videoBase, 'api/youtube/download'),
     )
-    return response.data || []
+
+    return response.data?.data || []
   },
 
-  async download({ videoId, saveDir, quality, startTime, endTime, downloadType }) {
+  async download({
+    videoId,
+    saveDir,
+    quality,
+    startTime,
+    endTime,
+    downloadType,
+  }) {
     const response = await apiClient.post(
       joinUrl(API_CONFIG.videoBase, 'api/youtube/download'),
       {
@@ -41,6 +53,7 @@ export const youtubeApi = {
         download_type: downloadType,
       },
     )
+
     return response.data
   },
 }

@@ -10,7 +10,7 @@ export const commentApi = {
       commentsUrl(`/${encodeURIComponent(mediaId)}`),
       { params: { type: mediaType } },
     )
-    return response.data || []
+    return response.data?.data || []
   },
 
   async listOthers(mediaId, excludeType) {
@@ -18,7 +18,7 @@ export const commentApi = {
       commentsUrl(`/${encodeURIComponent(mediaId)}/others`),
       { params: { exclude_type: excludeType } },
     )
-    return response.data || []
+    return response.data?.data || []
   },
 
   async create(mediaId, content, mediaType) {
@@ -37,7 +37,7 @@ export const commentApi = {
       commentsUrl(`/${encodeURIComponent(commentId)}`),
       { content },
     )
-    return response.data
+    return response.data?.data
   },
 
   async remove(commentId) {
