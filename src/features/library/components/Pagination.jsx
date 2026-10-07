@@ -3,11 +3,31 @@ export default function Pagination({ page, totalPages, onPageChange }) {
 
   return (
     <div className="pagination">
-      <button disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
+      <button
+        disabled={page <= 1}
+        onClick={() => onPageChange(page - 1)}
+      >
         前へ
       </button>
-      <span>{page} / {totalPages}</span>
-      <button disabled={page >= totalPages} onClick={() => onPageChange(page + 1)}>
+
+      {Array.from({ length: totalPages }, (_, index) => {
+        const pageNumber = index + 1
+
+        return (
+          <button
+            key={pageNumber}
+            className={pageNumber === page ? 'active' : ''}
+            onClick={() => onPageChange(pageNumber)}
+          >
+            {pageNumber}
+          </button>
+        )
+      })}
+
+      <button
+        disabled={page >= totalPages}
+        onClick={() => onPageChange(page + 1)}
+      >
         次へ
       </button>
     </div>
