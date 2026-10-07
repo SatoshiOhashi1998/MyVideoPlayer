@@ -5,18 +5,9 @@ const commentsUrl = (path = '') =>
   joinUrl(API_CONFIG.videoBase, `api/comments${path}`)
 
 export const commentApi = {
-  async list(mediaId, mediaType) {
+  async list(mediaId) {
     const response = await apiClient.get(
       commentsUrl(`/${encodeURIComponent(mediaId)}`),
-      { params: { type: mediaType } },
-    )
-    return response.data?.data || []
-  },
-
-  async listOthers(mediaId, excludeType) {
-    const response = await apiClient.get(
-      commentsUrl(`/${encodeURIComponent(mediaId)}/others`),
-      { params: { exclude_type: excludeType } },
     )
     return response.data?.data || []
   },

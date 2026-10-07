@@ -13,12 +13,6 @@ export default function CommentSection({ controller, onTimestampClick }) {
         disabled={controller.loading}
       />
 
-      <div className="comment-toggle-area">
-        <button type="button" onClick={controller.toggleOtherComments} disabled={controller.loading}>
-          {controller.otherCommentsVisible ? 'その他のコメントを隠す' : 'その他のコメントを表示'}
-        </button>
-      </div>
-
       {controller.error && <p className="watch-error">{controller.error}</p>}
 
       <CommentList
